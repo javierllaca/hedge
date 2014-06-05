@@ -3,11 +3,11 @@ package counter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class SimpleCounter
 {
-	public static LinkedList<String> cues;
+	public static ArrayList<String> cues;
 	public static int hedgeCount;
 
 	public static void loadCues(String filename)
@@ -16,12 +16,23 @@ public class SimpleCounter
 			File words = new File(filename);
 			Scanner db = new Scanner(words);
 
-			cues = new LinkedList<String>();
+			cues = new ArrayList<String>();
 			while (db.hasNextLine())
 				cues.add(db.nextLine());
 
 			db.close();
 		} catch (FileNotFoundException e) {};
+	}
+
+	public static String tag(String s, String cue, String tag)
+	{
+		String lhs = insert(s, "<" + tag + ">", s.indexOf(cue));
+		return insert(lhs, "</" + tag + ">", lhs.indexOf(cue) + cue.length());
+	}
+
+	public static String insert(String s1, String s2, int index)
+	{
+		return s1.substring(0, index) + s2 + s1.substring(index);
 	}
 
 	public static void main(String args[])
@@ -39,10 +50,14 @@ public class SimpleCounter
 			Scanner in = new Scanner(file);
 
 			while (in.hasNextLine()) {
-				String[] line = in.nextLine().split("\\s+");
-				for (String tok : line)
-					if (cues.contains(tok))
+				String line = in.nextLine();
+				for (String cue : cues) {
+					if (line.contains(cue)) {
 						hedgeCount++;
+						line = tag(line, cue, "tag");
+					}
+				}
+				System.out.print(line);
 			}
 
 			System.out.println(hedgeCount);
