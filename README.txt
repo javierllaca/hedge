@@ -7,11 +7,25 @@ Speech Lab, Columbia University
 
 README.txt
 
+database
+	en
+		combined_cues
+		lakoff.txt
+		multi-word_hedges.txt
+		p_hedge_cues.txt
+		r_hedge_cues.txt
+	sp
+		ideas.txt
+		lakoff_en.txt
+		lakoff_sp.txt
+
 src
 	counter
-		SimpleCounter.java
-	database
-		multi-word_hedges.txt
-		r_hedge_cues.txt
-		p_hedge_cues.txt
-		sample.txt
+		HedgeDetector.java
+	org
+		apache
+			commons
+				lang3
+					StringUtils.class
+
+	pride_and_prejudice.txt
