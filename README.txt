@@ -5,8 +5,6 @@ Speech Lab, Columbia University
 
 ** File tree **
 
-README.txt
-
 database/
 |--en/
 |  |--combined_cues
@@ -18,6 +16,12 @@ database/
    |--ideas.txt
    |--lakoff_en.txt
    |--lakoff_sp.txt
+
+README.txt
+
+scripts/
+|--wordcount.py
+|--xml_to_html.py
 
 src/
 |--counter/
