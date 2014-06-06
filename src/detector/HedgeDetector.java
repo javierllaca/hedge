@@ -1,4 +1,4 @@
-package counter;
+package detector;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,7 +43,7 @@ public class HedgeDetector
 	public static void main(String args[])
 	{
 		if (args.length != 2) {
-			System.out.println("Usage: SimpleCounter <hedgeCueFile> <inputFile>");
+			System.out.println("Usage: HedgeDetector <hedgeCueFile> <inputFile>");
 			return;
 		}
 
