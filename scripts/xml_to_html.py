@@ -42,9 +42,7 @@ for line in input_file:
 		output_file.write("\t<div class=\"quote\"><u>Quote:</u>\n")
 	elif "</quote" in line:
 		output_file.write("\t</div>\n")
-	elif "<?xml" in line:
-		output_file.write("\n")
-	elif line[0] == '\n':
+	elif "<?xml" in line or line[0] == '\n':
 		output_file.write("\n")
 	else:
 		output_file.write("\t<p>" + line + "\t</p>")

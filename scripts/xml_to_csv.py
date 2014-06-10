@@ -29,7 +29,7 @@ for line in input_file:
 		for key in sorted(attributes.keys()):
 			sys.stdout.write(attributes[key] + ",")
 		print "\"" + clean_line(line.strip()) + "\""
-	if any(x in line for x in ["<post", "</quote"]):
+	elif any(x in line for x in ["<post", "</quote"]):
 		if "<post" in line:
 			parse_post(line)
 		post = True
