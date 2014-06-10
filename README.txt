@@ -21,6 +21,7 @@ database/
 
 scripts/
 |--wordcount.py
+|--xml_to_csv.py
 |--xml_to_html.py
 
 src/
@@ -32,3 +33,9 @@ src/
 |        |--lang3/
 |           |--StringUtils.class
 |--pride_and_prejudice.txt
+
+** Encoding **
+
+When running HedgeDetector:
+- If input file is encoded in UTF-8, usage must be of the following form:
+	java -Dfile.encoding=UTF-8 HedgeDetector <hedgeCueFile> <inputFile>
