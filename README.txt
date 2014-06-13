@@ -33,14 +33,14 @@ test_files/
 |--borges.txt
 
 
-** Encoding **
+** Notes on encoding **
 
-Since the program is designed for processing Spanish data, everything must
+Since HedgeDetector is designed for processing Spanish data, everything must
 be encoded in UTF-8. When compiling and running the program, add the following
 flags:
 
 Compilation:
 javac -encoding utf8 detector/HedgeDetector.java
 
-Runtime:
+Execution:
 java -Dfile.encoding=UTF-8 detector.HedgeDetector <hedgeCueFile> <inputFile>
