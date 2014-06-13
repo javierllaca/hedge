@@ -7,35 +7,39 @@ Speech Lab, Columbia University
 
 README.txt
 
-database/
-|--en/
-|  |--combined_cues
-|  |--lakoff.txt
-|  |--multi-word_hedges.txt
-|  |--p_hedge_cues.txt
-|  |--r_hedge_cues.txt
-|--sp/
-   |--ideas.txt
-   |--lakoff_en.txt
-   |--lakoff_sp.txt
+crowdflower/
+|--instructions
 
-scripts/
-|--wordcount.py
-|--xml_to_csv.py
-|--xml_to_html.py
+cues/
+|--draft.txt
 
 src/
-|--counter/
+|--detector/
 |  |--HedgeDetector.java
 |--org/
 |  |--apache/
 |     |--commons/
 |        |--lang3/
 |           |--StringUtils.class
-|--pride_and_prejudice.txt
+|--scripts/
+   |--wordcount.py
+   |--xml_to_crowdflower.sh
+   |--xml_to_csv.py
+   |--xml_to_html.py
+
+test_files/
+|--epn.xml
+|--borges.txt
+
 
 ** Encoding **
 
-When running HedgeDetector:
-- If input file is encoded in UTF-8, usage must be of the following form:
-	java -Dfile.encoding=UTF-8 HedgeDetector <hedgeCueFile> <inputFile>
+Since the program is designed for processing Spanish data, everything must
+be encoded in UTF-8. When compiling and running the program, add the following
+flags:
+
+Compilation:
+javac -encoding utf8 detector/HedgeDetector.java
+
+Runtime:
+java -Dfile.encoding=UTF-8 detector.HedgeDetector <hedgeCueFile> <inputFile>
