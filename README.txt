@@ -22,6 +22,7 @@ src/
 |        |--lang3/
 |           |--StringUtils.class
 |--scripts/
+   |--purge_csv.py
    |--wordcount.py
    |--xml_to_crowdflower.sh
    |--xml_to_csv.py
