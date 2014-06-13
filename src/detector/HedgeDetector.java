@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.text.Normalizer;
 import org.apache.commons.lang3.StringUtils;
 
 public class HedgeDetector
@@ -25,12 +26,27 @@ public class HedgeDetector
 			cues = new ArrayList<String>();
 			while (db.hasNextLine()) {
 				String line = db.nextLine().trim();
-				if (!line.isEmpty()) // ignore blank lines
+				if (!line.isEmpty()) {// ignore blank lines
 					cues.add(line);
+					
+					// If cue has an acute accent
+					// add non-accented version to list
+					if (containsAcuteAccent(line))
+						cues.add(Normalizer.normalize(line, 
+							Normalizer.Form.NFD).replaceAll(
+							"[^\\p{ASCII}]", ""));
+				}
 			}
 
 			db.close();
 		} catch (FileNotFoundException e) {};
+	}
+
+	public static boolean containsAcuteAccent(String s)
+	{
+		Pattern pattern = Pattern.compile("[ÁÉÍÓÚáéíóú]");
+		Matcher matcher = pattern.matcher(s);
+		return matcher.find();
 	}
 
 	// Creates a regular expression pattern from all hedge cues
@@ -40,9 +56,9 @@ public class HedgeDetector
 		pattern = Pattern.compile(patternString);
 	}
 
-	public static void main(String args[])
+	public static void main(String[] args)
 	{
-		if (args.length != 2) {
+		if (args.length != 1) {
 			System.out.println("Usage: HedgeDetector <hedgeCueFile> <inputFile>");
 			return;
 		}
@@ -50,9 +66,9 @@ public class HedgeDetector
 		loadCues(args[0]);
 		createRegex();
 
-		try {
-			File file = new File(args[1]);
-			Scanner in = new Scanner(file);
+		//try {
+			//File file = new File(args[1]);
+			Scanner in = new Scanner(System.in);
 
 			while (in.hasNextLine()) {
 				String line = in.nextLine();
@@ -60,14 +76,15 @@ public class HedgeDetector
 				StringBuffer sb = new StringBuffer();
 				while (matcher.find()) {
 					hedgeCount++;
-					matcher.appendReplacement(sb, "<h>" + matcher.group() + "</h>");
+					matcher.appendReplacement(sb, 
+							"<strong>" + matcher.group() + "</strong>");
 				}
 				matcher.appendTail(sb);
 				System.out.println(sb);
 			}
 
-			System.out.println("\nHedges: " + hedgeCount);
+			//System.out.println("\nHedges: " + hedgeCount);
 			in.close();
-		} catch (FileNotFoundException e) {};
+		//} catch (FileNotFoundException e) {};
 	}
 }
