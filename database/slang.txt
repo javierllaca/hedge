@@ -1,0 +1,4 @@
+q	que
+k	que
+salu2	saludos
+no c	no sé
