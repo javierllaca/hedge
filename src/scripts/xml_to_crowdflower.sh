@@ -13,7 +13,7 @@ then
 		fi
 
 		# xml -> csv -> hedge-tagged csv -> purged csv
-		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 detector/HedgeDetector ../cues/draft.txt | python scripts/purge_csv.py > $2
+		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 detector/HedgeDetector ../database/draft.txt | python scripts/purge_csv.py > $2
 
 	else
 		echo "output file already exists"
