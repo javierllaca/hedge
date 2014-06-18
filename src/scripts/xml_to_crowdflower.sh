@@ -1,5 +1,11 @@
 #!/bin/sh
 
+#----------------------
+# xml_to_crowdflower.sh
+#----------------------
+
+# Converts an xml corpus file to a Crowdflower-ready csv file
+
 # check for proper usage
 if [ $# -eq 2 ]
 then
@@ -16,7 +22,8 @@ then
 		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 detector/HedgeDetector ../database/draft.txt | python scripts/purge_csv.py > $2
 
 	else
-		echo "output file already exists"
+		# output error message and realpath of file
+		echo "file already exists: $( readlink -f $2 )"
 	fi
 else
 	echo "usage: $0 <input_file> <output_file>"

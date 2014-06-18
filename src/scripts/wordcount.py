@@ -1,3 +1,10 @@
+#-------------
+# wordcount.py
+#-------------
+
+# Counts occurrences of distinct words in input file
+# Prints word and count to stdout
+
 import sys
 
 file_object = open(sys.argv[1], 'r')
@@ -13,5 +20,4 @@ for line in file_object:
 			words[tok] += 1
 
 for word in words:
-	#if words[word] > 5:
 	print "%-15s%d" % (word, words[word])

@@ -1,3 +1,9 @@
+#---------------
+# xml_to_html.py
+#---------------
+
+# Converts xml corpus file to a formatted html document
+
 import sys
 
 if len(sys.argv) != 2:
