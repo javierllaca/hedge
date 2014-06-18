@@ -20,8 +20,25 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class HedgeDetector
 {
-	public static ArrayList<String> cues, slang;
+	/**
+	 * Contains hedge cues
+	 */
+	public static ArrayList<String> cues;
+
+	/**
+	 * Contains slang terms
+	 */
+	public static ArrayList<String> slang;
+
+	/**
+	 * Contains slangs terms and their equivalences
+	 */
 	public static HashMap<String, String> map;
+
+	/**
+	 * Default constructor
+	 */
+	public HedgeDetector() {}
 
 	/** 
 	 * Loads hedge cues in file into an ArrayList object
@@ -148,15 +165,17 @@ public class HedgeDetector
 		Scanner in = new Scanner(System.in);
 
 		while (in.hasNextLine()) {
+
 			String line = nonSlang(in.nextLine(), slangPattern);
 			matcher = cuePattern.matcher(line);
-			StringBuffer sb = new StringBuffer();
 
-			while (matcher.find())
-				matcher.appendReplacement(sb, "<strong>" + matcher.group() + "</strong>");
+			System.out.println(line);
 
-			matcher.appendTail(sb);
-			System.out.println(sb);
+			while (matcher.find()) {
+				StringBuilder sbuild = new StringBuilder(line);
+				System.out.println(sbuild.insert(matcher.end(), "</strong>").insert(
+							matcher.start(), "<strong>"));
+			}
 		}
 
 		in.close();
