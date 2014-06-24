@@ -33,7 +33,9 @@ public class HedgeDetector
 	/**
 	 * Contains slangs terms and their equivalences
 	 */
-	public static HashMap<String, String> map;
+	public static HashMap<String, String> slangMap;
+
+	public static HashMap<String, ArrayList<String>> hedges;
 
 	/**
 	 * Default constructor
@@ -77,16 +79,16 @@ public class HedgeDetector
 	public static Pattern loadSlang(String filename)
 	{
 		try {
-			map = new HashMap<String, String>();
+			slangMap = new HashMap<String, String>();
 			File file = new File(filename);
 			Scanner in = new Scanner(file);
 
 			while (in.hasNextLine()) {
 				String tok[] = in.nextLine().split("\t");
-				map.put(tok[0], tok[1]);
+				slangMap.put(tok[0], tok[1]);
 			}
 
-			slang = new ArrayList<String>(map.keySet());
+			slang = new ArrayList<String>(slangMap.keySet());
 			
 			in.close();
 
@@ -110,7 +112,7 @@ public class HedgeDetector
 		StringBuffer sb = new StringBuffer();
 
 		while (matcher.find())
-			matcher.appendReplacement(sb, map.get(matcher.group()));
+			matcher.appendReplacement(sb, slangMap.get(matcher.group()));
 
 		matcher.appendTail(sb);
 
@@ -164,18 +166,20 @@ public class HedgeDetector
 
 		Scanner in = new Scanner(System.in);
 
+		// Print csv header
+		System.out.println(in.nextLine());
+
 		while (in.hasNextLine()) {
 
 			String line = nonSlang(in.nextLine(), slangPattern);
 			matcher = cuePattern.matcher(line);
 
-			System.out.println(line);
-
 			while (matcher.find()) {
-				StringBuilder sbuild = new StringBuilder(line);
-				System.out.println(sbuild.insert(matcher.end(), "</strong>").insert(
-							matcher.start(), "<strong>"));
+				StringBuilder taggedLine = new StringBuilder(line);
+				taggedLine.insert(matcher.end(), "</strong>").insert(matcher.start(), "<strong>");
+				System.out.println(taggedLine);
 			}
+
 		}
 
 		in.close();
