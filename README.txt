@@ -1,46 +1,37 @@
 Spanish Hedge Detector
+
 Javier Llaca
 Speech Lab, Columbia University
----------------------------------
+-------------------------------
 
-** File tree **
+** OVERVIEW **
 
-README.txt
-
-crowdflower/
-|--instructions
-
-cues/
-|--draft.txt
-
-src/
-|--detector/
-|  |--HedgeDetector.java
-|--org/
-|  |--apache/
-|     |--commons/
-|        |--lang3/
-|           |--StringUtils.class
-|--scripts/
-   |--purge_csv.py
-   |--wordcount.py
-   |--xml_to_crowdflower.sh
-   |--xml_to_csv.py
-   |--xml_to_html.py
-
-test_files/
-|--epn.xml
-|--borges.txt
+This program detects and tags potential hedges in Spanish text.
 
 
-** Notes on encoding **
 
-Since HedgeDetector is designed for processing Spanish data, everything must
-be encoded in UTF-8. When compiling and running the program, add the following
-flags:
+
+** DIRECTORY STRUCTURE **
+
+crowdflower/	Documents used in crowd-sourcing task
+database/	Data used in program
+src/		Source code
+test_files/	Miscellanous files for testing program
+
+README.txt	This file
+
+
+
+
+** ENCODING **
+
+In order to account for non-ASCII characters in Spanish data,
+the program uses UTF-8 encoding. 
+
+Add the following flags for compilation and execution:
 
 Compilation:
-javac -encoding utf8 detector/HedgeDetector.java
+javac  detector/HedgeDetector.java
 
 Execution:
-java -Dfile.encoding=UTF-8 detector.HedgeDetector <hedgeCueFile> <inputFile>
+java -Dfile.encoding=UTF-8 detector.HedgeDetector <hedgeFile> 
