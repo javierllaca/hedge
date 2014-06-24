@@ -3,6 +3,7 @@ package tag;
 import io.Input;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -13,47 +14,45 @@ import java.util.regex.Matcher;
 public class Tagger
 {
 	/**
-	 * String embedded in tag
-	 * Format: <tag>text</tag>
+	 * String used in tag
 	 */
 	private String tag;
 
 	/**
-	 * Pattern to be tagged
+	 * Pattern to be queried
 	 */
 	private Pattern pattern;
 
 	/**
-	 * Constructor
+	 * Initializes tag and creates a Pattern from terms in file
+	 * @param filename Path to term file
 	 */
 	public Tagger(String filename, String tag)
 	{
 		this.tag = tag;
-		loadCues(filename);
+		List<String> terms = termListFromFile(filename);
+		this.pattern = PatternUtils.createRegexFromList(terms);
 	}
 
 	/** 
-	 * Loads hedge cues in file into an ArrayList object
-	 * @param filename Path to hedge cue file
-	 * @return Regular expression pattern built from all hedge cues
+	 * Returns a list containing terms in file
+	 * @param filename Path to term file
+	 * @return List with terms in file
 	 */
-	public void loadCues(String filename)
+	public List<String> termListFromFile(String filename)
 	{
 		Input in = new Input(filename);
-		ArrayList<String> cues = new ArrayList<String>();
-
+		List<String> terms = new ArrayList<String>();
 		while (in.hasNextLine()) {
 			String line = in.readLine().trim();
 			if (!line.isEmpty()) {
-				cues.add(line);
+				terms.add(line);
 				if (PatternUtils.containsAcuteAccent(line))
-					cues.add(PatternUtils.normalizeEncoding(line));
+					terms.add(PatternUtils.normalizeEncoding(line));
 			}
 		}
-
 		in.close();
-
-		this.pattern = PatternUtils.createRegex(cues);
+		return terms;
 	}
 
 	/**

@@ -1,11 +1,30 @@
 package tag;
 
+/**
+ * A term with its associated definitions
+ * @author Javier Llaca
+ */
 public class Term
 {
+	/**
+	 * The term
+	 */
 	private String term;
+
+	/**
+	 * Array containing definitions of the term
+	 */
 	private String[] definitions;
+
+	/**
+	 * Number of definitions associated with the term
+	 */
 	private int definitionCount;
 
+	/**
+	 * Initializes term to given parameter, definitionCount to 0 and definitions array
+	 * @param term Term used for initialization
+	 */
 	public Term(String term)
 	{
 		this.term = term;
@@ -13,6 +32,10 @@ public class Term
 		this.definitionCount = 0;
 	}
 
+	/**
+	 * Adds a definition for this term
+	 * @param definition Definition to be added
+	 */
 	public void addDefinition(String definition)
 	{
 		if (definitionCount < 2) {
@@ -20,14 +43,23 @@ public class Term
 		}
 	}
 
-	public String getDefinition(int i)
+	/**
+	 * Returns the definition
+	 * @param index Index of definition in definition array
+	 * @return Definition at index
+	 */
+	public String getDefinition(int index)
 	{
-		if (i >= definitionCount) {
+		if (index >= definitionCount) {
 			return null;
 		}
-		return this.definitions[i];
+		return this.definitions[index];
 	}
 
+	/**
+	 * Returns a string with the term and its indexed definitions
+	 * @return String representation of Term
+	 */
 	public String toString()
 	{
 		/* Use StringBuilder for better performance
@@ -40,15 +72,5 @@ public class Term
 			str.append(this.definitions[i]);
 		}
 		return new String(str);
-	}
-	
-	public static void main(String[] args)
-	{
-		Term t = new Term("dog");
-		t.addDefinition("canine animal");
-		t.addDefinition("derrogatory adjective for a person");
-		t.addDefinition("garbage...");		// nothing is added
-		System.out.println(t);
-		System.out.println(t.getDefinition(3));	// prints "null"
 	}
 }

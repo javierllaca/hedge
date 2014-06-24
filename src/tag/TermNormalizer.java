@@ -3,6 +3,7 @@ package tag;
 import io.Input;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
@@ -20,35 +21,35 @@ public class TermNormalizer
 	private HashMap<String, String> termMap;
 
 	/**
-	 * Pattern to be matched
+	 * Pattern to be queried
 	 */
 	private Pattern pattern;
 
 	/**
-	 * 
+	 * Initializes term map and creates a Pattern from terms in file
+	 * @param filename Path to term file
 	 */
 	public TermNormalizer(String filename)
 	{
 		termMap = new HashMap<String, String>();
-		loadTerms(filename);
+		List<String> terms = termListFromFile(filename);
+		this.pattern = PatternUtils.createRegexFromList(terms);
 	}
 
 	/**
-	 * Loads terms and equivalences into an ArrayList object
-	 * @param filename Path to  term file
+	 * Returns a list with terms in file
+	 * @param filename Path to term file
+	 * @return List with terms
 	 */
-	public void loadTerms(String filename)
+	public List<String> termListFromFile(String filename)
 	{
 		Input in = new Input(filename);
-
 		while (in.hasNextLine()) {
 			String tok[] = in.readLine().split("\t");
 			termMap.put(tok[0], tok[1]);
 		}
-
 		in.close();
-
-		this.pattern = PatternUtils.createRegex(new ArrayList<String>(termMap.keySet()));
+		return new ArrayList<String>(termMap.keySet());
 	}
 
 	/**
@@ -60,11 +61,9 @@ public class TermNormalizer
 	{
 		Matcher matcher = pattern.matcher(line);
 		StringBuffer sb = new StringBuffer();
-
 		while (matcher.find())
 			matcher.appendReplacement(sb, termMap.get(matcher.group()));
 		matcher.appendTail(sb);
-
 		return new String(sb);
 	}
 }

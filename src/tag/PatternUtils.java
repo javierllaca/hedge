@@ -1,6 +1,6 @@
 package tag;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.text.Normalizer;
@@ -13,6 +13,9 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class PatternUtils
 {
+	/**
+	 * Pattern containing all accented vowel characters
+	 */
 	private static Pattern accent = Pattern.compile("[ÁÉÍÓÚáéíóú]");
 
 	/**
@@ -41,7 +44,7 @@ public class PatternUtils
 	 * @param list ArrayList of Strings with words to be used in pattern
 	 * @return Pattern built from String entries in list
 	 */
-	public static Pattern createRegex(ArrayList<String> list)
+	public static Pattern createRegexFromList(List<String> list)
 	{
 		String patternString = "\\b(" + StringUtils.join(list, "|") + ")\\b";
 		return Pattern.compile(patternString);
