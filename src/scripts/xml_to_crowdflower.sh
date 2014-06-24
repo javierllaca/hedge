@@ -12,14 +12,16 @@ then
 	# only write to output file if it does not already exist
 	if [ ! -f $2 ]
 	then
+		DRIVER=com/javierllaca/hedge/driver/Main
+
 		# if class file does not exist, create it
-		if [ ! -f detector/HedgeDetector.class ]
+		if [ ! -f $DRIVER.class ]
 		then
-			javac -encoding utf8 com/javierllaca/hedge/driver/Main.java
+			javac -encoding utf8 $DRIVER.java
 		fi
 
 		# xml -> csv -> hedge-tagged csv
-		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 com.javierllaca.hedge.driver.Main ../database/hedges.txt > $2
+		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 $DRIVER ../database/hedges.txt > $2
 
 	else
 		# output error message and realpath of file
