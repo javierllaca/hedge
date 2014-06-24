@@ -15,11 +15,11 @@ then
 		# if class file does not exist, create it
 		if [ ! -f detector/HedgeDetector.class ]
 		then
-			javac -encoding utf8 detector/HedgeDetector.java
+			javac -encoding utf8 com/javierllaca/hedge/driver/Main.java
 		fi
 
-		# xml -> csv -> hedge-tagged csv -> purged csv
-		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 detector/HedgeDetector ../database/hedges.txt > $2
+		# xml -> csv -> hedge-tagged csv
+		python scripts/xml_to_csv.py $1 | java -Dfile.encoding=utf-8 com.javierllaca.hedge.driver.Main ../database/hedges.txt > $2
 
 	else
 		# output error message and realpath of file

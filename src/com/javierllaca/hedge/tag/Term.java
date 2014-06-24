@@ -1,4 +1,4 @@
-package tag;
+package com.javierllaca.hedge.tag;
 
 /**
  * A term with its associated definitions

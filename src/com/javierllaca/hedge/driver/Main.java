@@ -1,7 +1,7 @@
-package driver;
+package com.javierllaca.hedge.driver;
 
-import tag.Tagger;
-import tag.TermNormalizer;
+import com.javierllaca.hedge.tag.Tagger;
+import com.javierllaca.hedge.tag.TermNormalizer;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,14 +10,17 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		Tagger tagger = new Tagger(args[0], "tag");
+		Tagger tagger = new Tagger(args[0], "strong");
 		Scanner in = new Scanner(System.in);
 		TermNormalizer normalizer = new TermNormalizer("../database/slang.txt");
 
+		// Print csv header
+		System.out.println(in.nextLine());
+
 		while (in.hasNextLine()) {
 			ArrayList<String> taggedLines = tagger.tagLine(normalizer.normalizeLine(in.nextLine()));
-			for (String tag : taggedLines)
-				System.out.println(tag);
+			for (String taggedLine : taggedLines)
+				System.out.println(taggedLine);
 		}
 	}
 }

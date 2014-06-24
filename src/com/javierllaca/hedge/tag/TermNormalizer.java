@@ -1,6 +1,6 @@
-package tag;
+package com.javierllaca.hedge.tag;
 
-import io.Input;
+import com.javierllaca.io.Input;
 
 import java.util.ArrayList;
 import java.util.List;
