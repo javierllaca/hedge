@@ -3,6 +3,7 @@ package com.javierllaca.hedge.tag;
 import com.javierllaca.io.Input;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -24,14 +25,19 @@ public class Tagger
 	private Pattern pattern;
 
 	/**
+	 * Map of a term to its definitions
+	 */
+	private HashMap<String, ArrayList<String>> map;
+
+	/**
 	 * Initializes tag and creates a Pattern from terms in file
 	 * @param filename Path to term file
 	 */
 	public Tagger(String filename, String tag)
 	{
 		this.tag = tag;
-		List<String> terms = termListFromFile(filename);
-		this.pattern = PatternUtils.createRegexFromList(terms);
+		this.map = new HashMap<String, ArrayList<String>>();
+		this.pattern = PatternUtils.createRegexFromList(termListFromFile(filename));
 	}
 
 	/** 
@@ -42,17 +48,31 @@ public class Tagger
 	public List<String> termListFromFile(String filename)
 	{
 		Input in = new Input(filename);
-		List<String> terms = new ArrayList<String>();
+
 		while (in.hasNextLine()) {
 			String line = in.readLine().trim();
+
 			if (!line.isEmpty()) {
-				terms.add(line);
-				if (PatternUtils.containsAcuteAccent(line))
-					terms.add(PatternUtils.normalizeEncoding(line));
+
+				String[] tokens = line.split("\t");
+				String term = tokens[0];
+
+				ArrayList<String> definitions = new ArrayList<String>();
+
+				for (int i = 1; i < tokens.length; i++) {
+					definitions.add(tokens[i]);
+				}
+
+				map.put(term, definitions);
+
+				if (PatternUtils.containsAcuteAccent(line)) {
+					String normalized = PatternUtils.normalizeEncoding(term);
+					map.put(normalized, definitions);
+				}
 			}
 		}
 		in.close();
-		return terms;
+		return new ArrayList<String>(map.keySet());
 	}
 
 	/**
@@ -65,9 +85,22 @@ public class Tagger
 		Matcher matcher = this.pattern.matcher(line);
 
 		while (matcher.find()) {
+			String term = matcher.group();
 			StringBuilder tag = new StringBuilder(line);
-			tags.add(new String(tag.insert(matcher.end(), "</" + this.tag + ">").insert(
-						matcher.start(), "<" + this.tag + ">")));
+
+			tag.insert(matcher.end(), "</" + this.tag + ">").insert(matcher.start(), "<" + this.tag + ">");
+
+			// Attach term to tag
+			tag.append(",\"" + term + "\"");
+
+			// Attach all term definitions to tag
+			for (String def : map.get(term)) {
+				tag.append(",\"");
+				tag.append(def);
+				tag.append("\"");
+			}
+
+			tags.add(new String(tag));
 		}
 
 		return tags;
