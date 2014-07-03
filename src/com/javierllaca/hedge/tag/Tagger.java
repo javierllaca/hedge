@@ -86,21 +86,16 @@ public class Tagger
 
 		while (matcher.find()) {
 			String term = matcher.group();
-			StringBuilder tag = new StringBuilder(line);
 
-			tag.insert(matcher.end(), "</" + this.tag + ">").insert(matcher.start(), "<" + this.tag + ">");
+			StringBuilder temp = (new StringBuilder(line));
+			temp.insert(matcher.end(), "</" + this.tag + ">");
+			temp.insert(matcher.start(), "<" + this.tag + ">");
 
-			// Attach term to tag
-			tag.append(",\"" + term + "\"");
-
-			// Attach all term definitions to tag
+			String tag = "\"" + temp.toString().replace("\"", "\"\"") + "\",\"" + term + "\"";
 			for (String def : map.get(term)) {
-				tag.append(",\"");
-				tag.append(def);
-				tag.append("\"");
+				tag += ",\"" + def + "\"";
 			}
-
-			tags.add(new String(tag));
+			tags.add(tag);
 		}
 
 		return tags;
