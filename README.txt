@@ -1,13 +1,20 @@
 Spanish Hedge Detector
 
-Javier Llaca
-Speech Lab, Columbia University
--------------------------------
+Author: Javier Llaca
+Speech Lab - Department of Computer Science, Columbia University
+----------------------------------------------------------------
 
 ** OVERVIEW **
 
 This program detects and tags potential hedges in Spanish text.
 
+
+
+** DEPENDENCIES **
+
+Java Libraries:
+- Apache OpenNLP
+- Apache Commons Lang
 
 
 
@@ -17,9 +24,6 @@ crowdflower/	Documents used in crowd-sourcing task
 database/	Data used in program
 src/		Source code
 test_files/	Miscellanous files for testing program
-
-README.txt	This file
-
 
 
 
@@ -31,7 +35,7 @@ the program uses UTF-8 encoding.
 Add the following flags for compilation and execution:
 
 Compilation:
-javac  detector/HedgeDetector.java
+javac -encoding utf8 ...
 
 Execution:
-java -Dfile.encoding=UTF-8 detector.HedgeDetector <hedgeFile> 
+java -Dfile.encoding=UTF-8 ...
