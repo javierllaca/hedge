@@ -2,6 +2,7 @@ package com.javierllaca.hedge.tag;
 
 import com.javierllaca.io.Input;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,40 +36,50 @@ public class Tagger {
 	public Tagger(String filename, String tag) {
 		this.tag = tag;
 		this.map = new HashMap<String, ArrayList<String>>();
-		this.pattern = PatternUtils.createRegexFromList(termListFromFile(filename));
+
+		termListFromFile(filename);
+		List<String> hedges = new ArrayList<String>(map.keySet());
+
+		this.pattern = PatternUtils.createRegexFromList(hedges);
 	}
 
 	/** 
 	 * Returns a list containing terms in file
 	 * @param filename Path to term file
-	 * @return List with terms in file
 	 */
-	public List<String> termListFromFile(String filename) {
-		Input in = new Input(filename);
-		while (in.hasNextLine()) {
-			String line = in.readLine().trim();
-
-			if (!line.isEmpty()) {
-
-				String[] tokens = line.split("\t");
-				String term = tokens[0];
-
-				ArrayList<String> definitions = new ArrayList<String>();
-
-				for (int i = 1; i < tokens.length; i++) {
-					definitions.add(tokens[i]);
-				}
-
-				map.put(term, definitions);
-
-				if (PatternUtils.containsAcuteAccent(line)) {
-					String normalized = PatternUtils.normalizeEncoding(term);
-					map.put(normalized, definitions);
-				}
+	public void termListFromFile(String filename) {
+		File file = new File(filename);
+		if (file.isDirectory()) {
+			File[] files = file.listFiles();
+			for (File f : files) {
+				termListFromFile(f.toString());
 			}
 		}
-		in.close();
-		return new ArrayList<String>(map.keySet());
+		else {
+			Input in = new Input(filename);
+			while (in.hasNextLine()) {
+				String line = in.readLine().trim();
+
+				if (!line.isEmpty()) {
+					String[] tokens = line.split("\t");
+					String term = tokens[0];
+
+					ArrayList<String> definitions = new ArrayList<String>();
+
+					for (int i = 1; i < tokens.length; i++) {
+						definitions.add(tokens[i]);
+					}
+
+					map.put(term, definitions);
+
+					if (PatternUtils.containsAcuteAccent(line)) {
+						String normalized = PatternUtils.normalizeEncoding(term);
+						map.put(normalized, definitions);
+					}
+				}
+			}
+			in.close();
+		}
 	}
 
 	/**
