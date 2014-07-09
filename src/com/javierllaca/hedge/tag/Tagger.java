@@ -12,8 +12,7 @@ import java.util.regex.Matcher;
  * Tags lines of text according to a text database
  * @author Javier Llaca
  */
-public class Tagger
-{
+public class Tagger {
 	/**
 	 * String used in tag
 	 */
@@ -33,8 +32,7 @@ public class Tagger
 	 * Initializes tag and creates a Pattern from terms in file
 	 * @param filename Path to term file
 	 */
-	public Tagger(String filename, String tag)
-	{
+	public Tagger(String filename, String tag) {
 		this.tag = tag;
 		this.map = new HashMap<String, ArrayList<String>>();
 		this.pattern = PatternUtils.createRegexFromList(termListFromFile(filename));
@@ -45,10 +43,8 @@ public class Tagger
 	 * @param filename Path to term file
 	 * @return List with terms in file
 	 */
-	public List<String> termListFromFile(String filename)
-	{
+	public List<String> termListFromFile(String filename) {
 		Input in = new Input(filename);
-
 		while (in.hasNextLine()) {
 			String line = in.readLine().trim();
 
@@ -79,8 +75,7 @@ public class Tagger
 	 * Returns an ArrayList containing all versions of tagged line
 	 * @param line Input line
 	 */
-	public ArrayList<String> tagLine(String line)
-	{
+	public ArrayList<String> tagLine(String line) {
 		ArrayList<String> tags = new ArrayList<String>();
 		Matcher matcher = this.pattern.matcher(line);
 

@@ -2,15 +2,13 @@ package com.javierllaca.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import java.util.Scanner;
 
 /**
- * Wrapper class for manipulating input
+ * Wrapper class for file input
  * @author Javier Llaca
  */
-public class Input
-{
+public class Input {
 	/**
 	 * File to read from
 	 */
@@ -21,8 +19,11 @@ public class Input
 	 */
 	private Scanner in;
 
-	public Input(String filename)
-	{
+	/**
+	 * Constructor
+	 * @param filename Path of file to be read
+	 */
+	public Input(String filename) {
 		try {
 			file = new File(filename);
 			in = new Scanner(file);
@@ -35,24 +36,21 @@ public class Input
 	 * Determines whether there is another line in input
 	 * @return true if there is at least one line, false otherwise
 	 */
-	public boolean hasNextLine()
-	{
+	public boolean hasNextLine() {
 		return in.hasNextLine();
 	}
 
 	/**
 	 * Returns the next line in input
 	 */
-	public String readLine()
-	{
+	public String readLine() {
 		return in.nextLine();
 	}
 
 	/**
 	 * Closes the Scanner object
 	 */
-	public void close()
-	{
+	public void close() {
 		in.close();
 	}
 }

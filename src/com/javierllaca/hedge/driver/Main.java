@@ -2,15 +2,15 @@ package com.javierllaca.hedge.driver;
 
 import com.javierllaca.hedge.tag.Tagger;
 import com.javierllaca.hedge.tag.TermNormalizer;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import opennlp.tools.sentdetect.*;
 
-public class Main
-{
-	public static void main(String[] args) throws Exception
-	{
+public class Main {
+	public static void main(String[] args) throws Exception {
 		TermNormalizer normalizer = new TermNormalizer("../database/slang.txt");
 		Tagger tagger = new Tagger(args[0], "strong");
 		Scanner in = new Scanner(System.in);
@@ -32,7 +32,6 @@ public class Main
 				}
 			}
 		}
-
 		in.close();
 	}
 }

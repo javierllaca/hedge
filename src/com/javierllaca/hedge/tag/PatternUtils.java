@@ -11,8 +11,7 @@ import org.apache.commons.lang3.StringUtils;
  * Utilities for manipulating regular expression patterns
  * @author Javier Llaca
  */
-public class PatternUtils
-{
+public class PatternUtils {
 	/**
 	 * Pattern containing all accented vowel characters
 	 */
@@ -23,8 +22,7 @@ public class PatternUtils
 	 * @param str Input string
 	 * @return ASCII-normalized String
 	 */
-	public static String normalizeEncoding(String str)
-	{
+	public static String normalizeEncoding(String str) {
 		return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 	}
 
@@ -33,8 +31,7 @@ public class PatternUtils
 	 * @param str Input string
 	 * @return true if character with acute accent is in str, false otherwise
 	 */
-	public static boolean containsAcuteAccent(String str)
-	{
+	public static boolean containsAcuteAccent(String str) {
 		Matcher matcher = accent.matcher(str);
 		return matcher.find();
 	}
@@ -44,8 +41,7 @@ public class PatternUtils
 	 * @param list ArrayList of Strings with words to be used in pattern
 	 * @return Pattern built from String entries in list
 	 */
-	public static Pattern createRegexFromList(List<String> list)
-	{
+	public static Pattern createRegexFromList(List<String> list) {
 		String patternString = "\\b(" + StringUtils.join(list, "|") + ")\\b";
 		return Pattern.compile(patternString);
 	}

@@ -4,8 +4,7 @@ package com.javierllaca.hedge.tag;
  * A term with its associated definitions
  * @author Javier Llaca
  */
-public class Term
-{
+public class Term {
 	/**
 	 * The term
 	 */
@@ -25,8 +24,7 @@ public class Term
 	 * Initializes term to given parameter, definitionCount to 0 and definitions array
 	 * @param term Term used for initialization
 	 */
-	public Term(String term)
-	{
+	public Term(String term) {
 		this.term = term;
 		this.definitions = new String[2];
 		this.definitionCount = 0;
@@ -36,8 +34,7 @@ public class Term
 	 * Adds a definition for this term
 	 * @param definition Definition to be added
 	 */
-	public void addDefinition(String definition)
-	{
+	public void addDefinition(String definition) {
 		if (definitionCount < 2) {
 			this.definitions[this.definitionCount++] = definition;
 		}
@@ -48,8 +45,7 @@ public class Term
 	 * @param index Index of definition in definition array
 	 * @return Definition at index
 	 */
-	public String getDefinition(int index)
-	{
+	public String getDefinition(int index) {
 		if (index >= definitionCount) {
 			return null;
 		}
@@ -60,8 +56,7 @@ public class Term
 	 * Returns a string with the term and its indexed definitions
 	 * @return String representation of Term
 	 */
-	public String toString()
-	{
+	public String toString() {
 		/* Use StringBuilder for better performance
 		 * Concatenation (apppend) avoids building new Strings */
 		StringBuilder str = new StringBuilder(this.term);
