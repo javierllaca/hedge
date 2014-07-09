@@ -37,22 +37,23 @@ public class Tagger {
 		this.tag = tag;
 		this.map = new HashMap<String, ArrayList<String>>();
 
-		termListFromFile(filename);
+		loadTerms(filename);
 		List<String> hedges = new ArrayList<String>(map.keySet());
 
 		this.pattern = PatternUtils.createRegexFromList(hedges);
 	}
 
 	/** 
-	 * Returns a list containing terms in file
+	 * Loads terms and definitions to from file into a HashMap
+	 * If filename points to a directory, files inside are accessed recursively
 	 * @param filename Path to term file
 	 */
-	public void termListFromFile(String filename) {
+	public void loadTerms(String filename) {
 		File file = new File(filename);
 		if (file.isDirectory()) {
 			File[] files = file.listFiles();
 			for (File f : files) {
-				termListFromFile(f.toString());
+				loadTerms(f.toString());
 			}
 		}
 		else {
