@@ -11,7 +11,7 @@ import opennlp.tools.sentdetect.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		TermNormalizer normalizer = new TermNormalizer("../database/slang.txt");
+		TermNormalizer normalizer = new TermNormalizer("../database/slang");
 		Tagger tagger = new Tagger(args[0], "strong");
 		Scanner in = new Scanner(System.in);
 
