@@ -23,7 +23,6 @@ Java Libraries:
 crowdflower/	Documents used in crowd-sourcing task
 database/	Data used in program
 src/		Source code
-test_files/	Miscellanous files for testing program
 
 
 
@@ -32,7 +31,7 @@ test_files/	Miscellanous files for testing program
 In order to account for non-ASCII characters in Spanish data,
 the program uses UTF-8 encoding. 
 
-Add the following flags for compilation and execution:
+Add the following flags at compilation and execution:
 
 Compilation:
 javac -encoding utf8 ...
