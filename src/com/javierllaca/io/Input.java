@@ -27,9 +27,7 @@ public class Input {
 		try {
 			file = new File(filename);
 			in = new Scanner(file);
-		} catch (FileNotFoundException e) {
-			System.out.println(e);
-		};
+		} catch (FileNotFoundException e) { e.printStackTrace(); }
 	}
 
 	/**
