@@ -20,8 +20,8 @@ Java Libraries:
 
 ** DIRECTORY STRUCTURE **
 
-crowdflower/	Documents used in crowd-sourcing task
-database/	Data used in program
+database/	Spanish hedges and slang terms
+doc/		Project documentation
 src/		Source code
 
 
