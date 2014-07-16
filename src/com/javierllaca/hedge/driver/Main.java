@@ -20,9 +20,6 @@ public class Main {
 
 		SentenceDetector detector = new SentenceDetectorME(model);
 
-		/* Print csv header */
-		System.out.println("sentence,term,definition1,definition2");
-
 		while (in.hasNextLine()) {
 			String[] results = detector.sentDetect(in.nextLine());
 			for (String result : results) {

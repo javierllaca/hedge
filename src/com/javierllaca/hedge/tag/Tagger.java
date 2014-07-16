@@ -62,7 +62,7 @@ public class Tagger {
 				String line = in.readLine().trim();
 
 				if (!line.isEmpty()) {
-					String[] tokens = line.split("\t");
+					String[] tokens = line.split("\\t+");
 					String term = tokens[0];
 
 					ArrayList<String> definitions = new ArrayList<String>();
@@ -98,7 +98,7 @@ public class Tagger {
 			temp.insert(matcher.end(), "</" + this.tag + ">");
 			temp.insert(matcher.start(), "<" + this.tag + ">");
 
-			String tag = "\"" + temp.toString().replace("\"", "\"\"") + "\",\"" + term + "\"";
+			String tag = "\"" + term + "\",\"" + temp.toString().replace("\"", "\"\"") + "\"";
 			for (String def : map.get(term)) {
 				tag += ",\"" + def + "\"";
 			}
