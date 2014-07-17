@@ -4,25 +4,22 @@
 
 # Prints text body of corpus xml files
 
-import fileinput
-import re
+import fileinput, re
 
 post = False
 
 def clean_line(line):
 	"""
-	Remove <img> and <a> tags
-	Escape quote characters
-	Return clean line
+	Return line without <img> and <a> tags
 	"""
 	clean = line
 	regex = "<img(.*?)/>" + "|" + "<a(.*?)</a>"	
 	matches = re.finditer(regex, clean)
 	for match in matches:
 		clean = clean.replace(match.group(), "")
-	return clean #.replace("\"", "\"\"")
+	return clean
 
-# Process lines in file
+# Iterate through lines in input
 for line in fileinput.input():
 	if any(x in line for x in ["</post", "<quote"]):
 		post = False
