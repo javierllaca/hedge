@@ -5,8 +5,6 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.text.Normalizer;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
  * Utilities for manipulating regular expression patterns
  * @author Javier Llaca
@@ -42,7 +40,24 @@ public class PatternUtils {
 	 * @return Pattern built from String entries in list
 	 */
 	public static Pattern createRegexFromList(List<String> list) {
-		String patternString = "\\b(" + StringUtils.join(list, "|") + ")\\b";
+		String patternString = "\\b(" + join(list, '|') + ")\\b";
 		return Pattern.compile(patternString);
+	}
+
+	/**
+	 * Returns a string of all items in list separated by separator
+	 * @param list List of Strings to be joined
+	 * @param separator Separator character to use
+	 * @return Joined Strings, null if empty list
+	 */
+	public static String join(List<String> list, Character separator) {
+		if (list.isEmpty()) {
+			return null;
+		}
+		String s = list.get(0);
+		for (int i = 1; i < list.size(); i++) {
+			s += separator + list.get(i);
+		}
+		return s;
 	}
 }
