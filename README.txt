@@ -13,14 +13,13 @@ This program detects and tags potential hedges in Spanish text.
 ** DEPENDENCIES **
 
 Java Libraries:
-- Apache OpenNLP
-- Apache Commons Lang
+- Apache OpenNLP (https://opennlp.apache.org)
 
 
 
 ** DIRECTORY STRUCTURE **
 
-database/	Spanish hedges and slang terms
+database/	Spanish hedges and slang term mappings
 doc/		Project documentation
 src/		Source code
 
@@ -29,7 +28,7 @@ src/		Source code
 ** ENCODING **
 
 In order to account for non-ASCII characters in Spanish data,
-the program uses UTF-8 encoding. 
+UTF-8 is used for text encoding. 
 
 Add the following flags at compilation and execution:
 
