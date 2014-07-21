@@ -19,9 +19,8 @@ Java Libraries:
 
 ** DIRECTORY STRUCTURE **
 
-database/	Spanish hedges and slang term mappings
 doc/		Project documentation
-src/		Source code
+src/		Source code (includes hedge and slang term database)
 
 
 
