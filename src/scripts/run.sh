@@ -26,5 +26,10 @@ javac -encoding utf8 $DRIVER.java
 # Print csv header
 echo "hedge,sentence,usage1,usage2"
 
-# Traverse file/directory -> parse -> tag -> sort -> purge
-traverse $INPUT_FILE | python scripts/parse_xml.py | java -Dfile.encoding=utf-8 $DRIVER $HEDGE_FILE $SLANG_FILE | sort | uniq
+# Get text -> parse XML -> tag -> remove duplicates -> shuffle -> get first 1000 -> sort
+traverse $INPUT_FILE | \
+python scripts/parse_xml.py | \
+java -Dfile.encoding=utf-8 $DRIVER $HEDGE_FILE $SLANG_FILE | \
+sort | uniq | \
+shuf | \
+head -n 1000 | sort
