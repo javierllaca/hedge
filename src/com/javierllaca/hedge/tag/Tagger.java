@@ -68,14 +68,16 @@ public class Tagger {
 					ArrayList<String> definitions = new ArrayList<String>();
 
 					for (int i = 1; i < tokens.length; i++) {
-						definitions.add(tokens[i]);
+						definitions.add(tagLine(tokens[i], term, this.tag));
 					}
 
 					map.put(term, definitions);
+					map.put(capitalize(term), definitions);
 
 					if (PatternUtils.containsAcuteAccent(line)) {
 						String normalized = PatternUtils.normalizeEncoding(term);
 						map.put(normalized, definitions);
+						map.put(capitalize(normalized), definitions);
 					}
 				}
 			}
@@ -86,13 +88,14 @@ public class Tagger {
 	/**
 	 * Returns an ArrayList containing all versions of tagged line
 	 * @param line Input line
+	 * @return List of versions of tagged line if at least one match is found; empty list otherwise
 	 */
 	public ArrayList<String> tagLine(String line) {
 		ArrayList<String> tags = new ArrayList<String>();
 		Matcher matcher = this.pattern.matcher(line);
 
 		while (matcher.find()) {
-			String term = matcher.group();
+			String term = matcher.group().toLowerCase();
 
 			StringBuilder temp = (new StringBuilder(line));
 			temp.insert(matcher.end(), "</" + this.tag + ">");
@@ -106,5 +109,35 @@ public class Tagger {
 		}
 
 		return tags;
+	}
+
+	/**
+	 * Returns the tagged line
+	 * @param line Input line
+	 * @param query Word to be tagged
+	 * @param tag Tag to be used
+	 * @return Tagged line if query is found; unmodified line otherwise
+	 */
+	public static String tagLine(String line, String query, String tag) {
+		String regex = PatternUtils.normalizeEncoding(query) + "|" + 
+			PatternUtils.normalizeEncoding(capitalize(query));
+		Matcher matcher = Pattern.compile(regex).matcher(PatternUtils.normalizeEncoding(line));
+
+		if (matcher.find()) {
+			StringBuilder temp = (new StringBuilder(line));
+			temp.insert(matcher.end(), "</" + tag + ">");
+			temp.insert(matcher.start(), "<" + tag + ">");
+			return new String(temp);
+		}
+		return line;
+	}
+	
+	/**
+	 * Returns the capitalized string
+	 * @param line Input String
+	 * @return String with upper case first character
+	 */
+	private static String capitalize(String line) {
+		  return Character.toUpperCase(line.charAt(0)) + line.substring(1);
 	}
 }
