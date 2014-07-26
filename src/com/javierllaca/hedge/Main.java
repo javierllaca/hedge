@@ -1,7 +1,8 @@
-package com.javierllaca.hedge.driver;
+package com.javierllaca.hedge;
 
-import com.javierllaca.hedge.tag.Tagger;
-import com.javierllaca.hedge.tag.TermNormalizer;
+import com.javierllaca.collect.Pair;
+import com.javierllaca.text.Tagger;
+import com.javierllaca.text.TermNormalizer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -19,22 +20,24 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 		if (args.length == 2) {
 			// Setup sentece detection
-			File modelFile = new File("en-sent.bin"); 
+			File modelFile = new File("bin/en-sent.bin"); 
 			SentenceModel model = new SentenceModel(modelFile);
 			SentenceDetector detector = new SentenceDetectorME(model);
 
-			// Setup hedge tagging and text normalization
-			Tagger tagger = new Tagger(args[0], "strong");
-			TermNormalizer normalizer = new TermNormalizer(args[1]);
+			// Setup slang normalization
+			TermNormalizer normalizer = new TermNormalizer(args[0]);
+
+			// Setup hedge tagging
+			Tagger tagger = new Tagger(args[1], "strong");
 
 			Scanner in = new Scanner(System.in);
 
 			while (in.hasNextLine()) {
 				String[] sentences = detector.sentDetect(in.nextLine());
 				for (String sentence : sentences) {
-					ArrayList<String> tags = tagger.tagLine(normalizer.normalizeLine(sentence));
-					for (String tag : tags) {
-						System.out.println(tag);
+					ArrayList<Pair<String,String>> tags = tagger.tagLine(normalizer.normalizeLine(sentence));
+					for (Pair<String,String> tag : tags) {
+						System.out.println("\"" + tag.first() + "\",\"" + tag.second().replace("\"", "\"\"") + "\"");
 					}
 				}
 			}

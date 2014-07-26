@@ -1,4 +1,4 @@
-package com.javierllaca.hedge.tag;
+package com.javierllaca.text;
 
 import com.javierllaca.io.Input;
 

@@ -1,4 +1,4 @@
-package com.javierllaca.hedge.tag;
+package com.javierllaca.text;
 
 import java.util.List;
 import java.util.regex.Pattern;
