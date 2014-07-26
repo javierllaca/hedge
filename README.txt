@@ -8,6 +8,13 @@ Speech Lab - Department of Computer Science, Columbia University
 
 This program detects and tags potential hedges in Spanish text.
 
+More specifically, the program goes through a Spanish corpus,
+extracts usable text, analyzes it, and produces a csv file for 
+use in a crowd-sourcing task.
+
+The csv file contains random and evenly-distributed instances 
+of possible hedges in the corpus.
+
 
 
 ** DEPENDENCIES **
@@ -29,10 +36,6 @@ src/		Source code (includes hedge and slang term database)
 In order to account for non-ASCII characters in Spanish data,
 UTF-8 is used for text encoding. 
 
-Add the following flags at compilation and execution:
-
-Compilation:
-javac -encoding utf8 ...
-
-Execution:
-java -Dfile.encoding=UTF-8 ...
+The following flags are added at compilation and execution:
+javac -encoding utf8 ...	(compilation)
+java -Dfile.encoding=UTF-8 ...	(execution)
