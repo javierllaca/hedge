@@ -1,17 +1,16 @@
-#--------------
-# parse_xml.py
-#--------------
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# Prints text body of corpus xml files
+'''
+Parse xml and print only content enclosed in <post> tags
+'''
 
-import fileinput, re
-
-post = False
+import re, sys
 
 def clean_line(line):
-	"""
+	'''
 	Return line without <img> and <a> tags
-	"""
+	'''
 	clean = line
 	regex = "<img(.*?)/>" + "|" + "<a(.*?)</a>"	
 	matches = re.finditer(regex, clean)
@@ -19,13 +18,17 @@ def clean_line(line):
 		clean = clean.replace(match.group(), "")
 	return clean
 
-# Iterate through lines in input
-for line in fileinput.input():
-	if any(x in line for x in ["</post", "<quote"]):
-		post = False
-	elif post and line.strip():
-		clean = clean_line(line).strip()
-		if clean:
-			print clean
-	elif any(x in line for x in ["<post", "</quote"]):
-		post = True
+def main():
+	post = False
+	for line in sys.stdin:
+		if any(x in line for x in ["</post", "<quote"]):
+			post = False
+		elif post and line.strip():
+			clean = clean_line(line).strip()
+			if clean:
+				print clean
+		elif any(x in line for x in ["<post", "</quote"]):
+			post = True
+
+if __name__ == "__main__":
+	main()
