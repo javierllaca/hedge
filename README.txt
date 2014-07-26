@@ -36,6 +36,6 @@ src/		Source code (includes hedge and slang term database)
 In order to account for non-ASCII characters in Spanish data,
 UTF-8 is used for text encoding. 
 
-The following flags are added at compilation and execution:
-javac -encoding utf8 ...	(compilation)
-java -Dfile.encoding=UTF-8 ...	(execution)
+The following flags are added at compilation and execution, respectively:
+javac -encoding utf8 ...
+java -Dfile.encoding=UTF-8 ...
