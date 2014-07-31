@@ -1,12 +1,15 @@
 #!/bin/sh
 
-SLANG_FILE=database/slang
-HEDGE_FILE=database/hedges
+SLANG=database/slang
+HEDGE=database/hedges
 
 DRIVER=com/javierllaca/hedge/Main
 
-INPUT_FILE=~/speech/corpus/forums/401
-LOG_FILE=401.log
+FORUM=386
+INPUT=~/speech/corpus/forums/$FORUm
+LOG=$FORUM.log
+
+TOKENS=5
 
 # Recursively output content of files in directory
 traverse () {
@@ -25,33 +28,28 @@ traverse () {
 javac -encoding utf8 $DRIVER.java
 
 # Print csv header
-echo "hedge,sentence,usage1,usage2"
+echo "hedge,sentence,usage1,usage2" > csv/$FORUM.csv
 
 # Output content of directory
-traverse $INPUT_FILE | \
+traverse $INPUT | \
 
 # Parse XML content
 python scripts/parse_xml.py | \
 
-'''
-Main Java engine:
-	- Tokenize sentences
-	- Normalize slang
-	- Tag hedges
-'''
-java -Dfile.encoding=utf-8 $DRIVER $SLANG_FILE $HEDGE_FILE | \
+# Main Java engine: Tokenize sentences, Normalize slang, Tag hedges
+java -Dfile.encoding=utf-8 $DRIVER $SLANG $HEDGE | \
 
 # Sort by hedge (first column)
-sort -t, -k1,1 | 
+sort -t, -k1,1 | \
 
 # Remove duplicates
 uniq | \
 
 # Select tokens and log results
-python scripts/select_tokens.py 2 log/$LOG_FILE | \
+python scripts/select_tokens.py $TOKENS log/$LOG | \
 
 # Append usages of tagged terms
-python scripts/append_usage.py $HEDGE_FILE | \
+python scripts/append_usage.py $HEDGE | \
 
 # Randomize rows for crowdsourcing task
-shuf
+shuf >> csv/$FORUM.csv
