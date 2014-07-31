@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 '''
@@ -14,19 +14,6 @@ def normalize(s):
 	'''
 	return unicodedata.normalize('NFD', s.decode('utf8')).encode('ascii', 'ignore')
 
-def tag_line(line, query, label):
-	'''
-	Return line with first instance of query tagged with label
-	'''
-	regex = normalize(query) + '|' + normalize(query.capitalize());
-	match = re.search(regex, normalize(line));
-	if match:
-		before = line[:match.start()]
-		middle = "<" + label + ">" + match.group() + "</" + label + ">"
-		after = line[match.end():]
-		return before + middle + after
-	return line;
-
 def definition_map(path):
 	'''
 	Returns a dictionary with terms as keys and its usages as values
@@ -38,9 +25,7 @@ def definition_map(path):
 		term = tokens[0]
 		definitions = []
 		for i in range(1, len(tokens)):
-			definition = tokens[i].strip()
-			definitions.append(tag_line(definition, term, "strong"))
-		definition_map[term] = definitions
+			definitions.append(tokens[i].strip())
 		definition_map[normalize(term)] = definitions
 	return definition_map
 
@@ -59,15 +44,6 @@ def traverse(path, function):
 		for f in os.listdir(path):
 			total = dict(total.items() + traverse(path + '/' + f, function).items())
 		return total
-
-def regex(ls, separator):
-	'''
-	Returns a regex formed by combining elements in collection
-	'''
-	s = "\\b(" + ls[0]
-	for i in range(1, len(ls)):
-		s += separator + ls[i]
-	return s + ")\\b"
 
 def main(argv):
 	path = argv[1]

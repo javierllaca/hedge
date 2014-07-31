@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 '''
@@ -23,7 +23,7 @@ def main():
 				print '\t<tr>'
 				print '\t\t<td>' + str(rownum) + '</td>'
 				for column in row:
-					print '\t\t<td valign=\"top\">' + column + '</td>'
+					print '\t\t<td>' + column + '</td>'
 				print '\t</tr>'
 			rownum += 1
 		print '</table>'
