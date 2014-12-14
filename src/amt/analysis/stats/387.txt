@@ -1,0 +1,12 @@
+*****Distribution*****
+
+Hedges          661
+Non-Hedges      141
+
+*****Confidence*****
+
+Mean            0.897339
+Median          1.000000
+Std. Dev.       0.153750
+Max             1.000000
+Min             0.501300
