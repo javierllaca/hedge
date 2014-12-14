@@ -1,25 +1,19 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-'''
-Append definitions to tagged lines
-'''
+"""Append definitions to tagged lines"""
 
 import os, re, sys, unicodedata
 
 def normalize(s):
-	'''
-	Return encoding-normalized string
-	Change utf8 characters to their ascii equivalents
-	'''
+	"""Return encoding-normalized string
+	Change utf8 characters to their ascii equivalents"""
 	return unicodedata.normalize('NFD', s.decode('utf8')).encode('ascii', 'ignore')
 
 def definition_map(path):
-	'''
-	Returns a dictionary with terms as keys and its usages as values
-	From file specified by path
-	'''
-	definition_map = dict()
+	"""Returns a dictionary with terms as keys and its usages as values
+	From file specified by path"""
+	definition_map = {}
 	for line in open(path, 'r'):
 		tokens = re.split('\\t+', line)
 		term = tokens[0]
@@ -30,17 +24,14 @@ def definition_map(path):
 	return definition_map
 
 def traverse(path, function):
-	'''
-	Recursively traverse a directory with a specified function
-	Calls function on path if path is a file
-	Traverses contents of path otherwise
-	Returns combined values of calls to function
-	'''
+	"""Recursively traverses a directory with a specified function
+	- If path is a file, calls function on path 
+	- Otherwise, returns all traversals of contents of path"""
 	path = os.path.abspath(path)
 	if os.path.isfile(path):
 		return eval(function)(path)
 	else:
-		total = dict()
+		total = {}
 		for f in os.listdir(path):
 			total = dict(total.items() + traverse(path + '/' + f, function).items())
 		return total
@@ -57,5 +48,5 @@ def main(argv):
 				sys.stdout.write(',\"' + definition.replace('\"', '\"\"') + '\"')
 		sys.stdout.write('\n')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	main(sys.argv)

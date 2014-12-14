@@ -1,25 +1,35 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-'''
-Parse results csv file from CrowdFlower
-'''
+"""Parse results csv file from CrowdFlower"""
 
-import csv, sys
+from csv import DictReader
+from sys import stdin
+from numpy import mean, median, std
 
-def main():
-	with sys.stdin as csvfile:
-		reader = csv.DictReader(csvfile, delimiter=',', quotechar='\"')
-		gold = hedge = prob_sum = rownum = 0
+def analyze(stream):
+	with stream as csvfile:
+		reader = DictReader(csvfile, delimiter=',', quotechar='\"')
+		hedges = non_hedges = 0
+		confidence = []
 		for row in reader:
 			if row['hedge'] == 'yes':
-				hedge += 1
-			if row['hedge_gold'] == 'yes':
-				gold += 1
-			prob_sum += float(row['hedge:confidence'])
-			rownum += 1
-		print "Hedges: %d / %d\nGold: %d\nAverage confidence: %f" % \
-				(hedge, rownum, gold, prob_sum / float(rownum))
-
+				hedges += 1
+			else:
+				non_hedges += 1
+			confidence.append(float(row['hedge:confidence']))
+		return hedges, non_hedges, confidence
+	
 if __name__ == "__main__":
-	main()
+	hedges, non_hedges, confidence = analyze(stdin)
+
+	print ('*' * 5) + 'Distribution' + ('*' * 5) + '\n'
+	print '%-15s %d' % ('Hedges', hedges)
+	print '%-15s %d' % ('Non-Hedges', non_hedges)
+
+	print '\n' + ('*' * 5) + 'Confidence' + ('*' * 5) + '\n'
+	print '%-15s %f' % ('Mean', mean(confidence))
+	print '%-15s %f' % ('Median', median(confidence))
+	print '%-15s %f' % ('Std. Dev.', std(confidence))
+	print '%-15s %f' % ('Max', max(confidence))
+	print '%-15s %f' % ('Min', min(confidence))
