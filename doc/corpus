@@ -1,39 +1,40 @@
-Forum	Files	Size (MB)
--------------------------
-386	3	145		http://www.forosperu.net
-387	10	285
-388	7	266
-389	25	395
-390	2	41
-391	8	82
-392	14	240
-393	2	36
-394	10	174
-395	2	61
-396	17	278
-398	1	21
-399	3	66		http://foro.forosmexico.com/
-400	11	144
-401	1	5		http://argenpills.forums-free.com/
-402	1	11
-403	2	11
-404	77	1238
-405	27	504
-406	7	188
-407	2	46
-408	5	77
-409	11	263
-411	13	244
-412	37	717
-413	7	152
-414	1	9
-415	6	165
-416	1	1
-417	4	81
-418	2	21
+Corpus Information
+------------------
 
-Total forums:	31
-Total files:	319
-Total size:	5967
+	Forum	Files	Size (MB) *	URL
+--------------------------------------------------------------------------
+	386	3	145		http://www.forosperu.net
+	387	10	285
+	388	7	266
+	389	25	395
+	390	2	41
+	391	8	82
+	392	14	240
+	393	2	36
+	394	10	174
+	395	2	61
+	396	17	278
+	398	1	21
+	399	3	66		http://foro.forosmexico.com/
+	400	11	144
+	401	1	5		http://argenpills.forums-free.com/
+	402	1	11		http://nodulo.trujaman.org
+	403	2	11		http://filosofa.crearforo.com
+	404	77	1238
+	405	27	504
+	406	7	188
+	407	2	46
+	408	5	77
+	409	11	263
+	411	13	244
+	412	37	717
+	413	7	152
+	414	1	9
+	415	6	165
+	416	1	1
+	417	4	81
+	418	2	21
+--------------------------------------------------------------------------
+Total	31	319	5967
 
-* Size is roughly 4 times greater when extracted
+* For compressed files. Once files are extracted, size is roughly 4 times greater.

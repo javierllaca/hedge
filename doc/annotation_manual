@@ -1,6 +1,94 @@
-Manual para la anotación de atenuantes retóricos en español, v.1.0
-------------------------------------------------------------------
+Manual para la anotación de atenuantes retóricos en español (v.1.0)
 
-hedge: Any linguistic device by which a speaker avoids being compromised by a statement that turns out to be wrong, a request that is not acceptable, and so on. Thus, instead of saying 'This argument is convincing', one might use a hedge and say 'As far as I can see this argument is convincing'; instead of simply giving an order 'Carry it into the kitchen!' one might use an interrogative as a hedge and say 'Could you perhaps carry it into the kitchen?'
+Ésta es una guía para la anotación de atenuantes retóricos. Contienen una 
+breve descripción de lo que son, seguida por el formato a seguir en su 
+anotación textual. 
 
-Matthews, Peter. The Concise Oxford Dictionary of Linguistics. 2007.
+1 ¿Qué es un atenuante retórico?
+
+Un atenuante retórico es “cualquier recurso lingüístico por medio del cual 
+alguien evita ser comprometido por decir algo que resulte ser falso o por hacer 
+una petición que pueda ser inaceptable, entre otras cosas. En vez de decir 
+'Este argumento es convincente', uno podría usar un atenuante retórico y 
+decir 'A mí me parece que este argumento es convincente'; en vez de 
+simplemente dar la orden 'Llévelo a la cocina', uno podría usar una pregunta 
+como atenuante retórico y decir '¿Podría tal vez llevarlo a la cocina?’". 
+(Matthews, Peter. The Concise Oxford Dictionary of Linguistics. 2007)
+
+Dicho de otra manera, es una palabra o frase que disminuye el compromiso que un 
+autor tiene con la veracidad de sus afirmaciones. Se pueden usar para:
+Mitigar o modular las afirmaciones de manera que la audiencia sienta que es 
+capaz de juzgar por sí misma, que el autor queda pendiente de su aceptación.
+Proteger al autor frente a las posibles reacciones que pueda provocar su 
+proposición o reflejar su modestia y su deferencia hacia la audiencia que va 
+dirigido el mensaje.
+Expresar cautela, modestia o cortesía por parte del autor.
+
+Como ejemplo, podemos considerar la siguiente oración:
+
+	“Yo creo que deberías de tomar esta ruta, pero bueno, es sólo una idea".
+
+Las frases "yo creo" y "es sólo una idea" sugieren que el autor no quiere 
+imponer su opinión sobre la persona a la que se dirige. Por lo tanto, se les 
+considera como atenuantes retóricos.
+
+1.1 Qué anotar
+
+Sólo las oraciones con alguna instancia de lenguaje especulativo deberán ser 
+anotadas. Si una oración no incluye algún elemento especulativo o cualquier 
+elemento que sugiera incertidumbre (i.e. la oración expresa sólo un hecho), 
+la ausencia de atenuación retórica no tendrá que ser indicada. Es importante 
+mencionar que no todo el lenguaje especulativo se considera como atenuación 
+retórica. Oraciones hipotéticas como ‘Si llueve, no iré al juego’ 
+contienen instancias de lenguaje especulativo (‘si’ en este caso), pero no 
+son instancias de atenuación retórica.
+
+En general, cuando no es claro si una palabra o frase es un atenuante 
+retórico, las siguientes preguntas pueden ser útiles:
+
+Hay alguna falta de información o incertidumbre? 
+Se está tratando de disminuir el impacto de la oración?
+
+Si la respuesta a cualquiera de estas preguntas es sí, hay una gran 
+probabilidad de que la oración en cuestión contenga un atenuante retórico.
+
+Nuestra labor es anotar las palabras o frases que indican la presencia de 
+atenuación retórica.
+
+1.1.1 Indicadores de atenuación retórica
+
+Un indicador de atenuación retórica (hedge cue en inglés) puede ser 
+cualquier palabra o combinación de palabras que indican incertidumbre, una 
+falta de precisión o un intento de amortiguar o reducir el impacto de un 
+enunciado.
+
+Supongo que Carlos tiene la razón.
+
+María estaba probablemente en estado de ebriedad.
+
+Yo creo que es un tema de gran importancia.
+
+Esto puede ser un efecto del bioterrorismo en los Estados Unidos.
+
+Es ampliamente reconocido que esta universidad tiene una buena reputación e 
+historial.
+
+En cada uno de estos ejemplos, la palabra subrayada es un indicador de 
+atenuación retórica. A continuación se presenta una descripción más 
+completa de estos indicadores.
+
+1.1.2 Tipos de atenuantes retóricos: relacionales y proposicionales
+
+De acuerdo a la definición de Prince (1980), los atenuantes retóricos se 
+pueden clasificar en dos categorías: relacionales, aquéllos que conectan al 
+hablador con el contenido proposicional, y proposicionales, aquéllos que 
+introducen incertidumbre al contenido proposicional en sí.
+
+1.2 Cómo anotar atenuantes retóricos
+
+La anotación sigue un formato sencillo delimitado por tabuladores. Cada línea 
+contiene la siguiente información:
+
+segmento		oración que contiene la anotación
+proposición		posible atenuante retórico
+clasificación		atenuante retórico relacional, proposicional o ninguno
