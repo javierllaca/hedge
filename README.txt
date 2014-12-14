@@ -1,4 +1,5 @@
-Spanish Hedge Detector
+Hedging in Spanish
+- Source code and documentation for research project on hedges -
 
 Author: Javier Llaca
 Speech Lab - Department of Computer Science, Columbia University
