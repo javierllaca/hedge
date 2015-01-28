@@ -1,9 +1,9 @@
 # Hedging in Spanish
 
-Source code and documentation for research project on hedges -
+Source code and documentation for research project on hedges
 
-Author: Javier Llaca
-Speech Lab - Department of Computer Science, Columbia University
+- Author: Javier Llaca
+- Speech Lab, Department of Computer Science, Columbia University
 
 ## Overview
 
@@ -20,11 +20,6 @@ of possible hedges in the corpus.
 
 Java Libraries:
 - Apache OpenNLP (https://opennlp.apache.org)
-
-## Directory Structure
-
-doc/		Project documentation
-src/		Source code (includes hedge and slang term database)
 
 ## ENCODING
 
