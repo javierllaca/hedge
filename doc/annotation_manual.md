@@ -1,8 +1,7 @@
 # Manual para la anotación de atenuantes retóricos en español (v.1.0)
 
-Ésta es una guía para la anotación de atenuantes retóricos. Contienen una 
-breve descripción de lo que son, seguida por el formato a seguir en su 
-anotación textual. 
+Ésta es una guía para la anotación de atenuantes retóricos. Contiene una 
+breve descripción seguida por el formato a seguir en su anotación textual. 
 
 ## 1 ¿Qué es un atenuante retórico?
 
