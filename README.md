@@ -21,7 +21,7 @@ of possible hedges in the corpus.
 Java Libraries:
 - Apache OpenNLP (https://opennlp.apache.org)
 
-## ENCODING
+## Encoding
 
 In order to account for non-ASCII characters in Spanish data,
 UTF-8 is used for text encoding. 
