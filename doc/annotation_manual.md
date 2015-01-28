@@ -1,10 +1,10 @@
-Manual para la anotación de atenuantes retóricos en español (v.1.0)
+# Manual para la anotación de atenuantes retóricos en español (v.1.0)
 
 Ésta es una guía para la anotación de atenuantes retóricos. Contienen una 
 breve descripción de lo que son, seguida por el formato a seguir en su 
 anotación textual. 
 
-1 ¿Qué es un atenuante retórico?
+## 1 ¿Qué es un atenuante retórico?
 
 Un atenuante retórico es “cualquier recurso lingüístico por medio del cual 
 alguien evita ser comprometido por decir algo que resulte ser falso o por hacer 
@@ -32,7 +32,7 @@ Las frases "yo creo" y "es sólo una idea" sugieren que el autor no quiere
 imponer su opinión sobre la persona a la que se dirige. Por lo tanto, se les 
 considera como atenuantes retóricos.
 
-1.1 Qué anotar
+### 1.1 Qué anotar
 
 Sólo las oraciones con alguna instancia de lenguaje especulativo deberán ser 
 anotadas. Si una oración no incluye algún elemento especulativo o cualquier 
@@ -55,40 +55,36 @@ probabilidad de que la oración en cuestión contenga un atenuante retórico.
 Nuestra labor es anotar las palabras o frases que indican la presencia de 
 atenuación retórica.
 
-1.1.1 Indicadores de atenuación retórica
+#### 1.1.1 Indicadores de atenuación retórica
 
 Un indicador de atenuación retórica (hedge cue en inglés) puede ser 
 cualquier palabra o combinación de palabras que indican incertidumbre, una 
 falta de precisión o un intento de amortiguar o reducir el impacto de un 
 enunciado.
 
-Supongo que Carlos tiene la razón.
-
-María estaba probablemente en estado de ebriedad.
-
-Yo creo que es un tema de gran importancia.
-
-Esto puede ser un efecto del bioterrorismo en los Estados Unidos.
-
-Es ampliamente reconocido que esta universidad tiene una buena reputación e 
+- [Supongo] que Carlos tiene la razón.
+- María estaba [probablemente] en estado de ebriedad.
+- Yo [creo] que es un tema de gran importancia.
+- Esto [puede] ser un efecto del bioterrorismo en los Estados Unidos.
+- Es [ampliamente] reconocido que esta universidad tiene una buena reputación e 
 historial.
 
-En cada uno de estos ejemplos, la palabra subrayada es un indicador de 
+En cada uno de estos ejemplos, la palabra en corchetes es un indicador de 
 atenuación retórica. A continuación se presenta una descripción más 
 completa de estos indicadores.
 
-1.1.2 Tipos de atenuantes retóricos: relacionales y proposicionales
+#### 1.1.2 Tipos de atenuantes retóricos: relacionales y proposicionales
 
 De acuerdo a la definición de Prince (1980), los atenuantes retóricos se 
 pueden clasificar en dos categorías: relacionales, aquéllos que conectan al 
 hablador con el contenido proposicional, y proposicionales, aquéllos que 
 introducen incertidumbre al contenido proposicional en sí.
 
-1.2 Cómo anotar atenuantes retóricos
+### 1.2 Cómo anotar atenuantes retóricos
 
 La anotación sigue un formato sencillo delimitado por tabuladores. Cada línea 
 contiene la siguiente información:
 
-segmento		oración que contiene la anotación
-proposición		posible atenuante retórico
-clasificación		atenuante retórico relacional, proposicional o ninguno
+- segmento (oración que contiene la anotación)
+- proposición (posible atenuante retórico)
+- clasificación (atenuante retórico relacional, proposicional o ninguno)
