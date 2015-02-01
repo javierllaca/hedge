@@ -1,4 +1,4 @@
-Instrucciones
+# Instrucciones
 
 1. Lee la oración y analiza el uso de la palabra o frase en negritas.
 2. Escoge la opción con el uso de la palabra o frase en negritas que más se parezca a su uso en la oración previa.
