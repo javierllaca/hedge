@@ -1,7 +1,9 @@
 from sys import argv, stdin
 
+"Wraps a text file to a maximum character width"
+
 def split(s, chars):
-	"""Splits s into lines no longer than a number of characters"""
+	"Splits s into lines no longer than a number of characters"
 	result = tail = ""
 	if len(s) < chars:
 		return s
@@ -15,3 +17,5 @@ if __name__ == '__main__':
 		chars = int(argv[1])
 		for line in stdin:
 			print split(line, chars),
+	else:
+		print 'Usage: python %s <characters>' % argv[0]
