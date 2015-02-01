@@ -1,6 +1,6 @@
 # Corpus Information
 
-Forum	|Files	|Size (MB) *	|URL
+Forum	|Files	|Size (MB)	|URL
 --------|-------|---------------|-----------------------------------
 386	|3	|145		|http://www.forosperu.net
 387	|10	|285		|
@@ -33,7 +33,4 @@ Forum	|Files	|Size (MB) *	|URL
 416	|1	|1		|
 417	|4	|81		|
 418	|2	|21		|
---------|-------|---------------|-----------------------------------
-Total	|319	|5967
-
-* Compressed. Extracted size is roughly 4 times greater.
+_Total_	|319	|5967
