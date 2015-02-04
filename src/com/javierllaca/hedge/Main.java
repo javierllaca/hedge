@@ -17,8 +17,11 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
  * @author Javier Llaca
  */
 public class Main {
+
 	public static void main(String[] args) throws Exception {
+
 		if (args.length == 2) {
+
 			// Setup sentece detection
 			File modelFile = new File("bin/en-sent.bin"); 
 			SentenceModel model = new SentenceModel(modelFile);
@@ -33,15 +36,26 @@ public class Main {
 			Scanner in = new Scanner(System.in);
 
 			while (in.hasNextLine()) {
+
 				String[] sentences = detector.sentDetect(in.nextLine());
+
 				for (String sentence : sentences) {
-					ArrayList<Pair<String,String>> tags = tagger.tagLine(normalizer.normalizeLine(sentence));
+
+					ArrayList<Pair<String,String>> tags = tagger.tagLine(
+							normalizer.normalizeLine(sentence));
+
 					for (Pair<String,String> tag : tags) {
-						System.out.println("\"" + tag.first() + "\",\"" + tag.second().replace("\"", "\"\"") + "\"");
+
+						System.out.println("\"" + tag.first() + "\",\"" + 
+								tag.second().replace("\"", "\"\"") + "\"");
 					}
 				}
 			}
+
 			in.close();
+
+		} else {
+			System.out.println("Usage: java Main <slangPath> <hedgePath>");
 		}
 	}
 }

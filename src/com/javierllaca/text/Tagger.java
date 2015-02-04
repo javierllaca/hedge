@@ -46,8 +46,7 @@ public class Tagger {
 			for (File f : files) {
 				terms.addAll(loadTerms(f.toString()));
 			}
-		}
-		else {
+		} else {
 			Input in = new Input(filename);
 			while (in.hasNextLine()) {
 				String line = in.readLine().trim();
@@ -70,7 +69,8 @@ public class Tagger {
 	/**
 	 * Returns an ArrayList containing all versions of tagged line
 	 * @param line Input line
-	 * @return List of versions of tagged line if at least one match is found; empty list otherwise
+	 * @return List of versions of tagged line if at least one match is found;
+	 * empty list otherwise
 	 */
 	public ArrayList<Pair<String,String>> tagLine(String line) {
 		ArrayList<Pair<String,String>> tags = new ArrayList<Pair<String,String>>();
@@ -91,7 +91,9 @@ public class Tagger {
 	 * @return Tagged line if query is found; unmodified line otherwise
 	 */
 	public static String tagLine(String line, String query, String label) {
-		String regex = PatternUtils.normalizeEncoding(query) + "|" + PatternUtils.normalizeEncoding(capitalize(query));
+		String regex = PatternUtils.normalizeEncoding(query) + "|" + 
+			PatternUtils.normalizeEncoding(capitalize(query));
+
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(PatternUtils.normalizeEncoding(line));
 		while (matcher.find()) {
@@ -110,7 +112,8 @@ public class Tagger {
 	 * @param end End index of match
 	 * @return Tagged line
 	 */
-	public static String tag(String line, String label, String match, int start, int end) {
+	public static String tag(String line, String label, String match, int start, 
+			int end) {
 		StringBuilder result = new StringBuilder(line.substring(0, start));
 		result.append("<" + label + ">" + match + "</" + label + ">");
 		return result.append(line.substring(end)).toString();
