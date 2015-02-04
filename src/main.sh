@@ -8,6 +8,7 @@ DRIVER=com/javierllaca/hedge/Main
 FORUM=387
 INPUT=~/speech/corpus/forums/$FORUM
 LOG=$FORUM.log
+OUTPUT=temp.csv #csv/$FORUM.csv
 
 TOKENS=10
 
@@ -28,7 +29,7 @@ traverse () {
 javac -encoding utf8 $DRIVER.java
 
 # Print csv header
-echo "hedge,sentence,usage1,usage2" > csv/$FORUM.csv
+echo "hedge,sentence,usage_a,usage_b" > $OUTPUT
 
 # Output content of directory
 traverse $INPUT | \
@@ -52,4 +53,4 @@ python scripts/select_tokens.py $TOKENS log/$LOG | \
 python scripts/append_usage.py $HEDGE | \
 
 # Randomize rows for crowdsourcing task
-shuf >> csv/$FORUM.csv
+shuf >> $OUTPUT
