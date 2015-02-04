@@ -15,7 +15,7 @@ def definition_map(path):
 	From file specified by path"""
 	definition_map = {}
 	for line in open(path, 'r'):
-		tokens = re.split('\\t+', line)
+		tokens = re.split('\\t+', line.strip())
 		term = tokens[0]
 		definitions = []
 		for i in range(1, len(tokens)):
