@@ -5,16 +5,16 @@ def duplicate(s, bound):
 	toks = s.split(",")
 	for i in range(bound):
 		res += reduce(lambda a, b: a + "," + b, 
-				map(lambda s: s + "(%d)" % (i + 1), toks)) + ","
+				map(lambda s: s + "_%d" % (i + 1), toks)) + ","
 	return res[:-1]
 
 def main(bound):
-	i = 0
+	i = -1
 	buf = ""
 	for line in stdin:
 		line = line.strip()
 		# print duplicated header
-		if i == 0:
+		if i == -1:
 			print duplicate(line, bound)
 		# flush buffer
 		elif i % bound == bound - 1:
