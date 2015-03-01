@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from sys import argv, stdin, stdout
 
 def duplicate(s, bound):
