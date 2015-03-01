@@ -21,51 +21,51 @@ import opennlp.tools.sentdetect.SentenceDetectorME;
  */
 public class Main {
 
-	public static void main(String[] args) throws Exception {
+  public static void main(String[] args) throws Exception {
 
-		if (args.length == 2) {
-			
-			// Sentece detection
-			SentenceDetector detector = new SentenceDetectorME(
-					new SentenceModel(
-						new File("bin/en-sent.bin")));
+    if (args.length == 2) {
 
-			// Slang normalization
-			TermNormalizer normalizer = new TermNormalizer(
-					args[0],
-					"slang",
-					"normal");
+      // Sentece detection
+      SentenceDetector detector = new SentenceDetectorME(
+          new SentenceModel(
+            new File("bin/en-sent.bin")));
 
-			// Hedge tagging
-			Tagger tagger = new Tagger(
-					"strong", 
-					PatternUtils.conjunctionRegex(
-						PatternUtils.normalizedList(
-							(new MyCSV(args[1])).colValues("hedge"))));
+      // Slang normalization
+      TermNormalizer normalizer = new TermNormalizer(
+          args[0],
+          "slang",
+          "normal");
 
-			Input in = new Input(System.in);
-			String line;
+      // Hedge tagging
+      Tagger tagger = new Tagger(
+          "strong", 
+          PatternUtils.conjunctionRegex(
+            PatternUtils.normalizedList(
+              (new MyCSV(args[1])).colValues("hedge"))));
 
-			while ((line = in.readLine()) != null) {
+      Input in = new Input(System.in);
+      String line;
 
-				for (String sentence : detector.sentDetect(line)) {
+      while ((line = in.readLine()) != null) {
 
-					List<Pair<String,String>> tags = 
-						tagger.tagLine(normalizer.normalizeLine(sentence));
+        for (String sentence : detector.sentDetect(line)) {
 
-					for (Pair<String,String> tag : tags) {
+          List<Pair<String,String>> tags = 
+            tagger.tagLine(normalizer.normalizeLine(sentence));
 
-						System.out.println(
-								MyCSV.formatString(tag.first()) + "," +
-								MyCSV.formatString(tag.second()));
-					}
-				}
-			}
+          for (Pair<String,String> tag : tags) {
 
-			in.close();
+            System.out.println(
+                MyCSV.formatString(tag.first()) + "," +
+                MyCSV.formatString(tag.second()));
+          }
+        }
+      }
 
-		} else {
-			System.out.println("Usage: java Main <slang csv> <hedge csv>");
-		}
-	}
+      in.close();
+
+    } else {
+      System.out.println("Usage: java Main <slang csv> <hedge csv>");
+    }
+  }
 }

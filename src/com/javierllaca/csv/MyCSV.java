@@ -16,53 +16,53 @@ import java.util.ArrayList;
  */
 public class MyCSV {
 
-	/**
-	 * The parser
-	 */
-	private CSVParser parser;
+  /**
+   * The parser
+   */
+  private CSVParser parser;
 
-	/**
-	 * The records of the parser. We keep track of them to avoid
-	 * using the parser iterator
-	 */
-	private List<CSVRecord> records;
+  /**
+   * The records of the parser. We keep track of them to avoid
+   * using the parser iterator
+   */
+  private List<CSVRecord> records;
 
-	/**
-	 * Constructs a MyCSV object from a csv file
-	 *
-	 * @param filename Path to csv file
-	 */
-	public MyCSV(String filename) {
-		try {
-			this.parser = CSVParser.parse(
-					new File(filename),
-					Charset.forName("UTF-8"),
-					CSVFormat.EXCEL.withHeader());
-			this.records = this.parser.getRecords();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+  /**
+   * Constructs a MyCSV object from a csv file
+   *
+   * @param filename Path to csv file
+   */
+  public MyCSV(String filename) {
+    try {
+      this.parser = CSVParser.parse(
+          new File(filename),
+          Charset.forName("UTF-8"),
+          CSVFormat.EXCEL.withHeader());
+      this.records = this.parser.getRecords();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
 
-	/**
-	 * Returns a list with all the values of a column in the csv
-	 *
-	 * @param colName Column header name
-	 */
-	public List<String> colValues(String colName) {
-		List<String> values = new ArrayList<String>();
-		for (CSVRecord record : this.records) {
-			values.add(record.get(colName));
-		}
-		return values;
-	}
+  /**
+   * Returns a list with all the values of a column in the csv
+   *
+   * @param colName Column header name
+   */
+  public List<String> colValues(String colName) {
+    List<String> values = new ArrayList<String>();
+    for (CSVRecord record : this.records) {
+      values.add(record.get(colName));
+    }
+    return values;
+  }
 
-	/**
-	 * Returns the string wrapped around quotes and escapes current quotes
-	 *
-	 * @param s String to be formatted
-	 */
-	public static String formatString(String s) {
-		return "\"" + s.replace("\"", "\"\"") + "\"";
-	}
+  /**
+   * Returns the string wrapped around quotes and escapes current quotes
+   *
+   * @param s String to be formatted
+   */
+  public static String formatString(String s) {
+    return "\"" + s.replace("\"", "\"\"") + "\"";
+  }
 }

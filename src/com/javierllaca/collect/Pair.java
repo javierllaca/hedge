@@ -6,24 +6,24 @@ package com.javierllaca.collect;
  */
 public class Pair<F,S> {
 
-	private F first;
-	private S second;
+  private F first;
+  private S second;
 
-	public Pair(F f, S s) {
-		this.first = f;
-		this.second = s;
-	}
+  public Pair(F f, S s) {
+    this.first = f;
+    this.second = s;
+  }
 
-	public F first() {
-		return this.first;
-	}
+  public F first() {
+    return this.first;
+  }
 
-	public S second() {
-		return this.second;
-	}
+  public S second() {
+    return this.second;
+  }
 
-	public String toString() {
-		return "(" + this.first.toString() + 
-			", " + this.second.toString() + ")";
-	}
+  public String toString() {
+    return "(" + this.first.toString() + 
+      ", " + this.second.toString() + ")";
+  }
 }
