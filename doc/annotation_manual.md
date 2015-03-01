@@ -1,7 +1,7 @@
 # Manual para la anotación de atenuantes retóricos en español (v.1.0)
 
-Ésta es una guía para la anotación de atenuantes retóricos. Contiene una 
-breve descripción seguida por el formato a seguir en su anotación textual. 
+Aquí se presenta una descripción de la atenuación retórica, seguida por el
+formato a seguir en su anotación textual. 
 
 ## 1 ¿Qué es un atenuante retórico?
 
@@ -25,7 +25,7 @@ Expresar cautela, modestia o cortesía por parte del autor.
 
 Como ejemplo, podemos considerar la siguiente oración:
 
-	“Yo creo que deberías de tomar esta ruta, pero bueno, es sólo una idea".
+	Yo creo que deberías de tomar esta ruta, pero bueno, es sólo una idea.
 
 Las frases "yo creo" y "es sólo una idea" sugieren que el autor no quiere 
 imponer su opinión sobre la persona a la que se dirige. Por lo tanto, se les 
@@ -35,10 +35,14 @@ considera como atenuantes retóricos.
 
 Sólo las oraciones con alguna instancia de lenguaje especulativo deberán ser 
 anotadas. Si una oración no incluye algún elemento especulativo o cualquier 
-elemento que sugiera incertidumbre (i.e. la oración expresa sólo un hecho), 
-la ausencia de atenuación retórica no tendrá que ser indicada. Es importante 
-mencionar que no todo el lenguaje especulativo se considera como atenuación 
-retórica. Oraciones hipotéticas como ‘Si llueve, no iré al juego’ 
+elemento que sugiera incertidumbre (i.e., la oración expresa sólo un hecho), 
+la oración puede ser ignorada.
+
+Sin embargo, no todo el lenguaje especulativo se considera atenuación 
+retórica. Oraciones hipotéticas como
+
+	Si llueve, no iré al juego.
+
 contienen instancias de lenguaje especulativo (‘si’ en este caso), pero no 
 son instancias de atenuación retórica.
 
@@ -48,8 +52,8 @@ retórico, las siguientes preguntas pueden ser útiles:
 Hay alguna falta de información o incertidumbre? 
 Se está tratando de disminuir el impacto de la oración?
 
-Si la respuesta a cualquiera de estas preguntas es sí, hay una gran 
-probabilidad de que la oración en cuestión contenga un atenuante retórico.
+Si la respuesta a cualquiera de estas preguntas es sí, es posible que la
+oración en cuestión contenga un atenuante retórico.
 
 Nuestra labor es anotar las palabras o frases que indican la presencia de 
 atenuación retórica.
@@ -72,18 +76,52 @@ En cada uno de estos ejemplos, la palabra en corchetes es un indicador de
 atenuación retórica. A continuación se presenta una descripción más 
 completa de estos indicadores.
 
-#### 1.1.2 Tipos de atenuantes retóricos: relacionales y proposicionales
+#### 1.1.2 Tipos de atenuantes retóricos
 
-De acuerdo a la definición de Prince (1980), los atenuantes retóricos se 
-pueden clasificar en dos categorías: relacionales, aquéllos que conectan al 
-hablador con el contenido proposicional, y proposicionales, aquéllos que 
-introducen incertidumbre al contenido proposicional en sí.
+De acuerdo a Prince (1980), los atenuantes retóricos se pueden clasificar como 
+relacionales o proposicionales.
 
-### 1.2 Cómo anotar atenuantes retóricos
+##### Relacionales
 
-La anotación sigue un formato sencillo delimitado por tabuladores. Cada línea 
-contiene la siguiente información:
+Relacionan al hablador con el contenido proposicional
 
-- segmento (oración que contiene la anotación)
+###### Adjetivos-adverbios
+
+###### Auxiliares
+
+###### Verbos
+
+##### Proposicionales
+
+Introducen incertidumbre en el contenido proposicional
+
+###### Grado
+
+###### Frecuencia
+
+###### Falta de especificidad
+
+###### Cuantificadores
+
+### 1.2 Cómo anotar los atenuantes retóricos
+
+La anotación sigue un formato en csv delimitado por tabuladores con las siguientes
+columnas:
+
+- segmento (oración anotada)
 - proposición (posible atenuante retórico)
-- clasificación (atenuante retórico relacional, proposicional o ninguno)
+- clasificación (relacional, proposicional o ninguno)
+
+Nota: En esta clasificación, se usan las abreviaciones HREL (relacional), HPROP
+(proposicional) y NH (ninguno).
+
+Consideremos este ejemplo:
+
+1. Yo creo que ésta es una situación delicada.
+
+Debido a que hay atenuación retórica en esta oración, la anotamos de la siguiente
+manera:
+
+        Yo creo que ésta es una situación delicada.     creo    HREL
+
+donde "creo" es un atenuante retórico de tipo relacional.
