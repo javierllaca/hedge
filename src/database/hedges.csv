@@ -1,16 +1,16 @@
-hedge,usage1,usage2,hedge_type,subcategory
-aparentemente,Aparentemente habrá un concierto esta tarde.,Otro,HPROP,DEG
+hedge,usage_a,usage_b,hedge_type,subcategory
+aparentemente,Aparentemente habrá un concierto esta tarde. (parece que),Otro,HPROP,DEG
 aproximadamente,La pared mide aproximadamente 15 metros.,Otro,HPROP,DEG
 básicamente,La película es básicamente una parodia.,Otro,HPROP,DEG
-casi,Ya casi no hay librerías en el pueblo.,Casi llego tarde a la junta.,HPROP,DEG
+casi,Casi no hay librerías en el pueblo. (se desconoce la situación),Casi llego tarde a la junta. (se conoce la situación),HPROP,DEG
 esencialmente,La película es esencialmente una parodia.,Otro,HPROP,DEG
 parcialmente,Lo que dices es parcialmente verdadero.,Otro,HPROP,DEG
 particularmente,Esto no es particularmente divertido.,Otro,HPROP,DEG
 principalmente,El orégano se usa principalmente como condimento.,Otro,HPROP,DEG
 prácticamente,La película es prácticamente una parodia.,Otro,HPROP,DEG
 relativamente,Esto debería de ser relativamente sencillo.,Otro,HPROP,DEG
-técnicamente,Técnicamente no es una respuesta correcta.,Los resultados del estudio son técnicamente precisos.,HPROP,DEG
-virtualmente,Es virtualmente imposible cruzar el valle caminando.,Yo me comunico virtualmente a través de mi computadora.,HPROP,DEG
+técnicamente,Técnicamente no es una respuesta correcta. (estrictamente),Los resultados del estudio son técnicamente precisos. (de acuerdo a la técnica),HPROP,DEG
+virtualmente,Es virtualmente imposible cruzar el río.,Yo me comunico virtualmente a través de mi computadora.,HPROP,DEG
 a veces,A veces puedo ser un poco molesto.,Otro,HPROP,FREQ
 de repente,De repente sentí muchas ganas de jugar futbol.,Otro,HPROP,FREQ
 frecuentemente,Mis padres me visitan frecuentemente.,Otro,HPROP,FREQ
@@ -20,8 +20,8 @@ rara vez,Rara vez ceno en ese restaurante.,Otro,HPROP,FREQ
 raramente,Raramente ceno en ese restaurante.,Otro,HPROP,FREQ
 seguido,Mis padres me visitan muy seguido.,Otro,HPROP,FREQ
 usualmente,Usualmente no salgo los jueves por la tarde.,Otro,HPROP,FREQ
-algo,La situación es algo delicada.,Vi que algo se movía ayer por la noche.,HPROP,NONSPEC
-alguien,Alguien tendrá que limpiar este desastre.,Yo soy alguien en quien confiar.,HPROP,NONSPEC
+algo,Su salud es algo delicada. (se desconoce el grado),"Vi que algo se estaba moviendo. (se conoce la situación, no necesariamente los detalles)",HPROP,NONSPEC
+alguien,Alguien tendrá que limpiar este desastre. (no se sabe quién),Carlos es alguien en quien confiar. (se sabe quién),HPROP,NONSPEC
 algún,Algún lápiz habrá caído por la abertura.,Otro,HPROP,NONSPEC
 algún día,Algún día veremos la puesta de sol.,Otro,HPROP,NONSPEC
 alguna,Alguna pluma habrá caído por la abertura.,Otro,HPROP,NONSPEC
@@ -33,19 +33,19 @@ bastante,Hay bastante trabajo por hacer.,Otro,HPROP,QUANT
 bastantes,Hay bastantes cosas por hacer.,Otro,HPROP,QUANT
 gran parte,Una gran parte de ustedes me conoce.,Otro,HPROP,QUANT
 la mayoría,La mayoría de ustedes me conoce.,Otro,HPROP,QUANT
-más o menos,Me dijeron más o menos qué tengo que hacer.,Usa más o menos azúcar de acuerdo a tu gusto.,HPROP,QUANT
-medio,Juan está medio loco.,Mi asiento es el de en medio.,HPROP,QUANT
+más o menos,Me dijeron más o menos qué tengo que hacer. (poco específico),Usa más o menos azúcar de acuerdo a tu gusto. (cantidad concreta),HPROP,QUANT
+medio,Juan está medio loco. (poco específico),Mi asiento es el de en medio. (centro),HPROP,QUANT
 multíples,Tenemos múltiples servicios disponibles.,Otro,HPROP,QUANT
-poco,Sería poco prudente hablarle de esa manera.,Hay poco entusiasmo en el público.,HPROP,QUANT
-por decir algo,"Podrías salir a comer, por decir algo.",Castigaron a Manuel por decir algo ofensivo.,HPROP,QUANT
-reducido,El espacio para convivir es reducido.,Los fondos para el arte se han reducido.,HPROP,QUANT
-un par,Tengo un par de sugerencias.,La tercia vence al par en un juego de póquer.,HPROP,QUANT
-un poco,Es un poco atrevido hablarle de esa manera.,Preparé un poco de pollo para la comida.,HPROP,QUANT
+poco,Sería poco prudente hablarle de esa manera. (juicio),Hay poco gente en el público. (cantidad concreta),HPROP,QUANT
+por decir algo,"Podrías salir a comer, por decir algo. (sugerencia)",Castigaron a Manuel por decir algo ofensivo. (acción),HPROP,QUANT
+reducido,"El espacio para convivir es reducido. (pequeño, pero sin especificar)",Los fondos para el arte se han reducido. (disminuido; bajado),HPROP,QUANT
+un par,"Tengo un par de sugerencias. (no es clara la cantidad, puede ser mayor a dos)",La tercia vence al par en un juego de póquer. (dos),HPROP,QUANT
+un poco,Es un poco atrevido hablarle de esa manera. (juicio),Preparé un poco de caldo para la comida. (cantidad concreta),HPROP,QUANT
 varios,Tenemos varios servicios disponibles.,Otro,HPROP,QUANT
-necesariamente,No necesariamente lloverá esta tarde.,La ciencia política está necesariamente conectada a la economía.,HREL,ADJADV
+necesariamente,No necesariamente lloverá esta tarde. (no se sabe con certidumbre),La política está necesariamente conectada a la economía. (inevitablemente),HREL,ADJADV
 probablemente ,Probablemente sea mejor que hablemos con tu familia.,Otro,HREL,ADJADV
 quizá,Quizá sea mejor que hablemos con tu familia.,Otro,HREL,ADJADV
-quién sabe,Quién sabe si esto funcione.,¿Quién sabe cómo resolver este problema?,HREL,ADJADV
+quién sabe,Quién sabe si esto funcione. (incertidumbre),¿Quién sabe cómo resolver este problema? (buscando alguien),HREL,ADJADV
 seguramente,El evento seguramente será un éxito.,Las contraseñas nos permiten navegar la red seguramente.,HREL,ADJADV
 seguro,El evento seguro será un éxito.,No es seguro caminar por estas calles.,HREL,ADJADV
 sin duda,Sin duda el evento será un éxito.,"Al terminar la clase, quedé sin duda alguna sobre el material.",HREL,ADJADV
@@ -53,24 +53,25 @@ tal vez,Tal vez sea mejor que hablemos con tu familia.,Otro,HREL,ADJADV
 debe,Debe de ser difícil para tu familia.,La casa debe construirse en dos semanas.,HREL,AUX
 debería,Debería ser difícil para tu familia.,La casa debería construirse en dos semanas.,HREL,AUX
 deberías,Deberías considerar otra solución.,Tu deberías imaginar un mundo sin violencia.,HREL,AUX
-podría,Esta ruta podría ser peligrosa.,Yo podría imaginar un mundo sin violencia.,HREL,AUX
-podrías,Podrías considerar otra solución.,Tú podrías imaginar un mundo sin violencia.,HREL,AUX
-puede,Esta ruta puede ser peligrosa.,José puede entrar gratuitamente por ser un estudiante.,HREL,AUX
-asumo,Yo asumo que me darán un aumento.,Yo asumo la posición de director.,HREL,VERB
-confío,Yo confío en que todo saldrá bien.,Confío el ciudado de mis hijos a José.,HREL,VERB
-considero,Yo considero que sería mejor esperar.,Considero a Manuel como mi mejor amigo.,HREL,VERB
-creo,Yo creo que hay que esperar.,Yo creo en la resurrección de Jesucristo.,HREL,VERB
-diría,Yo diría que hay que esperar.,Mi padre diría que eso está mal.,HREL,VERB
-encuentro,Lo encuentro un poco cuestionable.,Me encuentro en casa de María.,HREL,VERB
-entiendo,Entiendo si no puedes asistir a mi fiesta.,Yo entiendo la tarea de matemáticas.,HREL,VERB
-especulo,Yo especulo que sería mejor esperar.,Yo especulo sobre la teoría política de Marx.,HREL,VERB
-espero,Espero que todo salga bien.,Espero una respuesta antes del Lunes.,HREL,VERB
-imagino,Imagino que hay que actuar cuanto antes.,Imagino un mundo sin violencia.,HREL,VERB
-parece,Me parece que hay que esperar.,Te pareces a tu padre en esta foto.,HREL,VERB
-no sé,No sé si sea la mejor idea.,Esto no se puede hacer en menos de una hora.,HREL,VERB
-propongo,Propongo que esperemos unos momentos.,Propongo una reforma energética a nivel nacional.,HREL,VERB
-se ve,Se ve como una propuesta interesante.,Su casa se ve desde la colina.,HREL,VERB
-siento,Siento que podríamos trabajar más a fondo.,Siento un dolor fuerte en el estómago.,HREL,VERB
-suena,Tu idea me suena bien.,Las bocinas suenan demasiado fuerte.,HREL,VERB
-sugiero,Sugiero que esperemos un momento.,Sugiero y evoco recuerdos de la infancia al tocar el piano.,HREL,VERB
-supongo,Supongo que hay que esperar.,Yo no supongo nada para la comunidad.,HREL,VERB
+podría,Esta ruta podría ser peligrosa. (posibilidad),Yo podría imaginar un mundo sin violencia. (capacidad),HREL,AUX
+podrías,Podrías considerar otra solución. (posibilidad),Tú podrías imaginar un mundo sin violencia. (capacidad),HREL,AUX
+puede,Esta ruta puede ser peligrosa. (posibilidad),José puede entrar gratuitamente con su credencial de estudiante. (capacidad),HREL,AUX
+asumo,Yo asumo que me darán un aumento. (posibilidad),Yo asumo la posición de director. (acción),HREL,VERB
+confío,Yo confío en que todo saldrá bien. (posibilidad),Confío el ciudado de mis hijos a José.,HREL,VERB
+considero,Yo considero que sería mejor esperar. (juicio),Considero a Manuel como mi mejor amigo.,HREL,VERB
+creo,Yo creo que hay que esperar. (juicio),Yo creo en la resurrección de Jesucristo. (creencia),HREL,VERB
+diría,Yo diría que hay que esperar. (juicio),Mi padre diría que eso está mal. (acción),HREL,VERB
+encuentro,Lo encuentro un poco cuestionable. (juicio),Me encuentro en casa de María. (ubicación),HREL,VERB
+entiendo,"Como yo lo entiendo, me quedaré en tu casa mañana. (juicio)",Yo entiendo la tarea de matemáticas. (comprensión),HREL,VERB
+especulo,Yo especulo que sería mejor esperar. (juicio),Yo especulo sobre las tendencias del mercado financiero.,HREL,VERB
+espero,Espero que todo salga bien. (posibilidad),Espero tu respuesta antes del Lunes. (orden),HREL,VERB
+imagino,Imagino que hay que actuar cuanto antes. (juicio),Imagino un mundo sin violencia. (capacidad),HREL,VERB
+parece,Me parece que hay que esperar. (juicio),Te pareces a tu padre en esta foto. (semejanza),HREL,VERB
+pienso,Pienso que hay que esperar. (juicio),Yo pienso en ti todas las tardes. (acción de pensar),HREL,VERB
+no sé,No sé si sea la mejor idea. (incertidumbre),Esto no se puede hacer en menos de una hora. (negación),HREL,VERB
+propongo,Propongo que esperemos unos momentos. (juicio),Propongo una reforma energética a nivel nacional. / Le propongo matrimonio a mi novia esta tarde. (afirmando una acción),HREL,VERB
+se ve,Se ve como una propuesta interesante. (juicio),Su casa se ve desde la colina. (ver con los ojos),HREL,VERB
+siento,Siento que podríamos trabajar más a fondo. (juicio),Siento un dolor fuerte en el estómago. (sensación física),HREL,VERB
+suena,Tu idea me suena bien. (juicio),Las bocinas suenan demasiado fuerte. (sonido),HREL,VERB
+sugiero,Sugiero que esperemos un momento. (juicio),Sugiero y evoco recuerdos de la infancia al tocar el piano. (indirectamente),HREL,VERB
+supongo,Supongo que hay que esperar. (juicio),Yo no supongo nada para la comunidad. (aportación),HREL,VERB
