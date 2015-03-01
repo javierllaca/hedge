@@ -1,56 +1,66 @@
 #!/bin/sh
 
-SLANG=database/slang
-HEDGE=database/hedges
-
 DRIVER=com/javierllaca/hedge/Main
 
-FORUM=387
-INPUT=~/speech/corpus/forums/$FORUM
-LOG=$FORUM.log
-OUTPUT=temp.csv #csv/$FORUM.csv
+DEPENDENCIES=~/java/commons-csv-1.1.jar:~/java/opennlp-maxent-3.0.3.jar:~/java/opennlp-tools-1.5.3.jar:.
 
-TOKENS=10
+SLANG=database/slang.csv
+HEDGE=~/hedges.csv #database/hedges.csv
+
+FORUM=$1
+TOKENS=$2
+
+INPUT=~/speech/corpus/forums/$FORUM
+OUTPUT=csv/$FORUM.csv
+LOG=$FORUM.log
 
 # Recursively output content of files in directory
 traverse () {
-	if [ -d $1 ]
-	then
-		for f in $1/*
-		do
-			traverse $f
-		done
-	else
-		cat $1 
-	fi
+        if [ -d $1 ]
+        then
+                for f in $1/*
+                do
+                        traverse $f
+                done
+        else
+                cat $1 
+        fi
 }
 
-# Compile java code
-javac -encoding utf8 $DRIVER.java
+if [ $# -eq 2 ]
+then
+        # Compile all relevant java code
+        javac -encoding utf8 -cp $DEPENDENCIES $DRIVER.java
 
-# Print csv header
-echo "hedge,sentence,usage_a,usage_b" > $OUTPUT
+        # Print csv header
+        echo "hedge,sentence,usage_a,usage_b" > $OUTPUT
 
-# Output content of directory
-traverse $INPUT | \
+        # Output content of directory
+        traverse $INPUT | \
 
-# Parse XML content
-python scripts/parse_xml.py | \
+        # Parse XML content
+        python scripts/parse_xml.py | \
 
-# Main Java engine: Tokenize sentences, Normalize slang, Tag hedges
-java -Dfile.encoding=utf-8 $DRIVER $SLANG $HEDGE | \
+        # Main Java engine:
+        # - Tokenize sentences
+        # - Normalize slang
+        # - Tag hedges
+        java -Dfile.encoding=utf-8 -cp $DEPENDENCIES $DRIVER $SLANG $HEDGE | \
 
-# Sort by hedge (first column)
-sort -t, -k1,1 | \
+        # Sort alphabetically by hedge (first column)
+        sort -t, -k1,1 | \
 
-# Remove duplicates
-uniq | \
+                # Remove duplicates
+        uniq | \
 
-# Select tokens and log results
-python scripts/select_tokens.py $TOKENS log/$LOG | \
+        # Select tokens and log results
+        python scripts/select_tokens.py $TOKENS log/$LOG | \
 
-# Append usages of tagged terms
-python scripts/append_usage.py $HEDGE | \
+        # Append usages of tagged terms
+        python scripts/append_usage.py $HEDGE | \
 
-# Randomize rows for crowdsourcing task
-shuf >> $OUTPUT
+        # Randomize rows for crowdsourcing task
+        shuf >> $OUTPUT
+else
+        echo 'Usage:' $0 '<forum> <# tokens>'
+fi
