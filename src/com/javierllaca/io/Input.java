@@ -1,54 +1,65 @@
 package com.javierllaca.io;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * Wrapper class for file input
+ *
  * @author Javier Llaca
  */
 public class Input {
-	/**
-	 * File to read from
-	 */
-	private File file;
 
 	/**
-	 * Reading object
+	 * The input reader
 	 */
-	private Scanner in;
+	private BufferedReader in;
 
 	/**
-	 * Constructor
+	 * Constructor for file inputs
+	 *
 	 * @param filename Path of file to be read
 	 */
 	public Input(String filename) {
 		try {
-			file = new File(filename);
-			in = new Scanner(file);
-		} catch (FileNotFoundException e) { e.printStackTrace(); }
+			this.in = new BufferedReader(new FileReader(new File(filename)));
+		} catch (Exception e) { 
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * Determines whether there is another line in input
-	 * @return true if there is at least one line, false otherwise
+	 * Constructor for stdin (or other stream) input
+	 *
+	 * @param stream Stream to be read
 	 */
-	public boolean hasNextLine() {
-		return in.hasNextLine();
+	public Input(InputStream stream) {
+		this.in = new BufferedReader(new InputStreamReader(stream));
 	}
 
 	/**
 	 * Returns the next line in input
 	 */
 	public String readLine() {
-		return in.nextLine();
+		try {
+			return this.in.readLine();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} return null;
 	}
 
 	/**
-	 * Closes the Scanner object
+	 * Closes the reader
 	 */
 	public void close() {
-		in.close();
+		try {
+			this.in.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

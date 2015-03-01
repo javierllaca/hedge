@@ -5,6 +5,7 @@ package com.javierllaca.collect;
  * @author Javier Llaca
  */
 public class Pair<F,S> {
+
 	private F first;
 	private S second;
 
@@ -22,6 +23,7 @@ public class Pair<F,S> {
 	}
 
 	public String toString() {
-		return "(" + this.first.toString() + ", " + this.second.toString() + ")";
+		return "(" + this.first.toString() + 
+			", " + this.second.toString() + ")";
 	}
 }

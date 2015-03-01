@@ -1,19 +1,22 @@
 package com.javierllaca.hedge;
 
+import com.javierllaca.csv.MyCSV;
 import com.javierllaca.collect.Pair;
+import com.javierllaca.io.Input;
+import com.javierllaca.text.PatternUtils;
 import com.javierllaca.text.Tagger;
 import com.javierllaca.text.TermNormalizer;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 import opennlp.tools.sentdetect.SentenceModel;
 import opennlp.tools.sentdetect.SentenceDetector;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 
 /**
- * Driver for hedge detector program
+ * Driver for hedge tagging program
+ *
  * @author Javier Llaca
  */
 public class Main {
@@ -21,33 +24,40 @@ public class Main {
 	public static void main(String[] args) throws Exception {
 
 		if (args.length == 2) {
+			
+			// Sentece detection
+			SentenceDetector detector = new SentenceDetectorME(
+					new SentenceModel(
+						new File("bin/en-sent.bin")));
 
-			// Setup sentece detection
-			File modelFile = new File("bin/en-sent.bin"); 
-			SentenceModel model = new SentenceModel(modelFile);
-			SentenceDetector detector = new SentenceDetectorME(model);
+			// Slang normalization
+			TermNormalizer normalizer = new TermNormalizer(
+					args[0],
+					"slang",
+					"normal");
 
-			// Setup slang normalization
-			TermNormalizer normalizer = new TermNormalizer(args[0]);
+			// Hedge tagging
+			Tagger tagger = new Tagger(
+					"strong", 
+					PatternUtils.conjunctionRegex(
+						PatternUtils.normalizedList(
+							(new MyCSV(args[1])).colValues("hedge"))));
 
-			// Setup hedge tagging
-			Tagger tagger = new Tagger(args[1], "strong");
+			Input in = new Input(System.in);
+			String line;
 
-			Scanner in = new Scanner(System.in);
+			while ((line = in.readLine()) != null) {
 
-			while (in.hasNextLine()) {
+				for (String sentence : detector.sentDetect(line)) {
 
-				String[] sentences = detector.sentDetect(in.nextLine());
-
-				for (String sentence : sentences) {
-
-					ArrayList<Pair<String,String>> tags = tagger.tagLine(
-							normalizer.normalizeLine(sentence));
+					List<Pair<String,String>> tags = 
+						tagger.tagLine(normalizer.normalizeLine(sentence));
 
 					for (Pair<String,String> tag : tags) {
 
-						System.out.println("\"" + tag.first() + "\",\"" + 
-								tag.second().replace("\"", "\"\"") + "\"");
+						System.out.println(
+								MyCSV.formatString(tag.first()) + "," +
+								MyCSV.formatString(tag.second()));
 					}
 				}
 			}
@@ -55,7 +65,7 @@ public class Main {
 			in.close();
 
 		} else {
-			System.out.println("Usage: java Main <slangPath> <hedgePath>");
+			System.out.println("Usage: java Main <slang csv> <hedge csv>");
 		}
 	}
 }
