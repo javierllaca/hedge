@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from csv import DictReader, DictWriter
 from sys import argv, stdin, stdout
 
@@ -16,6 +19,7 @@ def parse_response(c):
 	return 'true'
 
 def main(in_path, out_path):
+    """Labels gold (test) data in corpus csv files"""
 	reader = DictReader(open(in_path, 'r'))
 	writer = DictWriter(open(out_path, 'wb'), 
 			fieldnames=reader.fieldnames + ['gold', 'hedge_gold'])

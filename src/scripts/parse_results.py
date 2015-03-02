@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""Parse results csv file from CrowdFlower"""
-
 from csv import DictReader
 from sys import stdin, argv
 
@@ -11,6 +9,7 @@ def clean_line(line):
 	return line.replace("<strong>", "").replace("</strong>", "")
 
 def main(argv):
+    """Parse results csv file from CrowdFlower"""
 	fuzzy = []
 	with stdin as csvfile:
 		reader = DictReader(csvfile, delimiter=',', quotechar='\"')
@@ -31,5 +30,3 @@ def main(argv):
 
 if __name__ == "__main__":
 	main(argv)
-	#for row in main(argv):
-		#print '"%s","","","%s","%s","%s"' % tuple(map(lambda s: s.replace('\"', '\"\"'), [row['orig_hedge'], row['sentence'], row['usage1'], row['usage2']]))

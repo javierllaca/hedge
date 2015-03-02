@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""Parse xml and print only content enclosed in <post> tags"""
-
 from re import finditer
 from sys import stdin
 
@@ -16,6 +14,7 @@ def clean_line(line):
 	return clean
 
 def main():
+    """Parse xml and print only content enclosed in <post> tags"""
 	post = False
 	for line in stdin:
 		if any(x in line for x in ['</post', '<quote']):

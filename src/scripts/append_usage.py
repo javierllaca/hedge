@@ -23,9 +23,12 @@ def hedge_dict(path):
 def format_entry(line):
     return '\"' + line.replace('\"', '\"\"') + '\"'
 
-if __name__ == '__main__':
-    hedges = hedge_dict(argv[1])
+def main(path):
+    hedges = hedge_dict(path)
     for line in stdin:
         row = hedges[line[:line.index(',')].replace('"', '')]
         print '%s,%s,%s' % (line.strip(), 
                 format_entry(row['usage_a']), format_entry(row['usage_b']))
+
+if __name__ == '__main__':
+    main(argv[1])

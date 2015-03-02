@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""Parse results csv file from CrowdFlower"""
-
 from csv import DictReader
 from sys import stdin
 from numpy import mean, median, std
@@ -20,7 +18,9 @@ def analyze(stream):
 			confidence.append(float(row['hedge:confidence']))
 		return hedges, non_hedges, confidence
 	
-if __name__ == "__main__":
+def main():
+    """Parse results csv file from CrowdFlower"""
+
 	hedges, non_hedges, confidence = analyze(stdin)
 
 	print ('*' * 5) + 'Distribution' + ('*' * 5) + '\n'
@@ -33,3 +33,6 @@ if __name__ == "__main__":
 	print '%-15s %f' % ('Std. Dev.', std(confidence))
 	print '%-15s %f' % ('Max', max(confidence))
 	print '%-15s %f' % ('Min', min(confidence))
+
+if __name__ == "__main__":
+    main()

@@ -1,12 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""Parse results csv file from CrowdFlower"""
-
 from csv import DictReader
 from sys import stdin, argv
 
 def main():
+    """Parse results csv file from CrowdFlower"""
 	with stdin as csvfile:
 		reader = DictReader(csvfile, delimiter=',', quotechar='\"')
 		confidence = {}
