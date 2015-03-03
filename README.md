@@ -16,19 +16,15 @@ use in a crowd-sourcing task.
 The csv file contains random and evenly-distributed instances 
 of possible hedges in the corpus.
 
+This repository also contains a series of scripts for data analysis.
+
 ## Dependencies
 
 Java Libraries:
-- Apache OpenNLP (https://opennlp.apache.org)
+- [Apache OpenNLP](https://opennlp.apache.org)
+- [Apache Commons CSV](http://commons.apache.org/proper/commons-csv/)
 
 ## Encoding
 
 In order to account for non-ASCII characters in Spanish data,
-UTF-8 is used for text encoding. 
-
-The following flags are added at compilation and execution, respectively:
-
-```
-javac -encoding utf8 ...
-java -Dfile.encoding=UTF-8 ...
-```
+programs are compiled and executed using UTF-8 encoding.
