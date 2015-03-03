@@ -104,7 +104,9 @@ Algunos ejemplos:
 
 ##### Proposicionales
 
-- Introducen incertidumbre en el contenido proposicional
+Introducen incertidumbre en el contenido proposicional
+
+Algunos ejemplos:
 
 ###### Grado
 
