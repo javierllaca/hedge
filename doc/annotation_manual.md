@@ -89,42 +89,42 @@ Algunos ejemplos:
 
 ###### Adjetivos-adverbios
 
-[Quizá] sea mejor que hablemos con tu familia.
-[Quién sabe] si esto funcione.
+- [Quizá] sea mejor que hablemos con tu familia.
+- [Quién sabe] si esto funcione.
 
 ###### Auxiliares
 
-[Deberías] considerar otra solución.
-Esta ruta [podría] ser peligrosa.
+- [Deberías] considerar otra solución.
+- Esta ruta [podría] ser peligrosa.
 
 ###### Verbos
 
-Yo [diría] que hay que esperar.
-[Siento] que podríamos trabajar más a fondo.
+- Yo [diría] que hay que esperar.
+- [Siento] que podríamos trabajar más a fondo.
 
 ##### Proposicionales
 
-Introducen incertidumbre en el contenido proposicional
+- Introducen incertidumbre en el contenido proposicional
 
 ###### Grado
 
-[Casi] no hay librerías en el pueblo.
-Esto debería de ser [relativamente] sencillo.
+- [Casi] no hay librerías en el pueblo.
+- Esto debería de ser [relativamente] sencillo.
 
 ###### Frecuencia
 
-[Generalmente] no salgo los jueves por la tarde.
-[Raramente ceno en ese restaurante.
+- [Generalmente] no salgo los jueves por la tarde.
+- [Raramente ceno en ese restaurante.
 
 ###### Falta de especificidad
 
-Tuvo que haber escapado de [alguna] manera.
-[Hay quien] dice que murió ahogado.
+- Tuvo que haber escapado de [alguna] manera.
+- [Hay quien] dice que murió ahogado.
 
 ###### Cuantificadores
 
-Me dijeron [más o menos] qué tengo que hacer.
-Sería [poco prudente] hablarle de esa manera.
+- Me dijeron [más o menos] qué tengo que hacer.
+- Sería [poco prudente] hablarle de esa manera.
 
 ### 1.2 Cómo anotar los atenuantes retóricos
 
