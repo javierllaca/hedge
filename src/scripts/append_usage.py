@@ -1,8 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-"""Append usages to tagged lines"""
-
 from csv import DictReader
 from sys import argv, stdin
 import unicodedata
@@ -24,10 +22,11 @@ def format_entry(line):
     return '\"' + line.replace('\"', '\"\"') + '\"'
 
 def main(path):
+    """Append usages to tagged lines"""
     hedges = hedge_dict(path)
     for line in stdin:
         row = hedges[line[:line.index(',')].replace('"', '')]
-        print '%s,%s,%s' % (line.strip(), 
+        print '%s,%s,%s,FALSE,FALSE' % (line.strip(), 
                 format_entry(row['usage_a']), format_entry(row['usage_b']))
 
 if __name__ == '__main__':

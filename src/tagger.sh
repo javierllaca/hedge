@@ -2,16 +2,17 @@
 
 DRIVER=com/javierllaca/hedge/Main
 
-DEPENDENCIES=~/java/commons-csv-1.1.jar:~/java/opennlp-maxent-3.0.3.jar:~/java/opennlp-tools-1.5.3.jar:.
+CLASSPATH=~/java
+DEPENDENCIES="$CLASSPATH/*":.
 
 SLANG=database/slang.csv
-HEDGE=~/hedges.csv #database/hedges.csv
+HEDGE=database/hedges.csv
 
 FORUM=$1
 TOKENS=$2
 
 INPUT=~/speech/corpus/forums/$FORUM
-OUTPUT=csv/$FORUM.csv
+OUTPUT=amt/input/$FORUM.csv
 LOG=$FORUM.log
 
 # Recursively output content of files in directory

@@ -1,33 +1,43 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import csv
 from sys import argv, stdin, stdout
 
-def duplicate(s, bound):
-    res = ""
-    toks = s.split(",")
-    for i in range(bound):
-        res += reduce(lambda a, b: a + "," + b, 
-                map(lambda s: s + "_%d" % (i + 1), toks)) + ","
-    return res[:-1]
+def number_header(header, n):
+    return map(lambda s: s + "_%d" % n, header)
 
-def main(bound):
-    """Compresses several csv rows into one"""
-    i = -1
-    buf = ""
-    for line in stdin:
-        line = line.strip()
-        # print duplicated header
-        if i == -1:
-            print duplicate(line, bound)
-        # flush buffer
-        elif i % bound == bound - 1:
-            print buf + line
-			buf = ""
-        # compress rows into buffer
-        else:
-            buf += line + ","
+def duplicate_header(header, n):
+    return reduce(lambda l1, l2: l1 + l2,
+            [number_header(header, i) for i in range(1, n + 1)])
+
+def read_csv(path):
+    with open(path, 'r') as csv_file:
+        reader = csv.reader(csv_file, delimiter=',', quotechar='\"')
+        header = reader.next()
+        return header, [row for row in reader]
+
+def group_rows(rows, n):
+    """Returns a list of lists made by grouping n elements together"""
+    groups, buf, i = [], [], 0
+    while len(rows):
+        buf.extend([elem for elem in rows.pop(0)])
         i += 1
+        if i % n == 0:
+            groups.append(buf)
+            buf = []
+    return groups
 
-if __name__ == "__main__" and len(argv) == 2:
-    main(int(argv[1]))
+def main(path, n):
+    """Compresses n csv rows into one"""
+    header, rows = read_csv(path)
+    new_header = duplicate_header(header, n)
+    new_rows = group_rows(rows, n)
+    print new_rows
+    writer = csv.writer(open('temp.csv', 'w'), delimiter=',', quotechar='\"')
+    writer.writerow(new_header)
+    for row in new_rows:
+        writer.writerow(row)
+
+if __name__ == "__main__" and len(argv) == 3:
+    main(argv[1], int(argv[2]))
