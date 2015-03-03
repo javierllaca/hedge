@@ -5,6 +5,8 @@ DRIVER=com/javierllaca/hedge/Main
 CLASSPATH=~/java
 DEPENDENCIES="$CLASSPATH/*":.
 
+SCRIPTS=scripts/preprocessing
+
 SLANG=database/slang.csv
 HEDGE=database/hedges.csv
 
@@ -55,10 +57,10 @@ then
         uniq | \
 
         # Select tokens and log results
-        python scripts/select_tokens.py $TOKENS log/$LOG | \
+        python $SCRIPTS/select_tokens.py $TOKENS log/$LOG | \
 
         # Append usages of tagged terms
-        python scripts/append_usage.py $HEDGE | \
+        python $SCRIPTS/append_usage.py $HEDGE | \
 
         # Randomize rows for crowdsourcing task
         shuf >> $OUTPUT
