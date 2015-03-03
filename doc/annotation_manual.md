@@ -85,11 +85,22 @@ relacionales o proposicionales.
 
 Relacionan al hablador con el contenido proposicional
 
+Algunos ejemplos:
+
 ###### Adjetivos-adverbios
+
+[Quizá] sea mejor que hablemos con tu familia.
+[Quién sabe] si esto funcione.
 
 ###### Auxiliares
 
+[Deberías] considerar otra solución.
+Esta ruta [podría] ser peligrosa.
+
 ###### Verbos
+
+Yo [diría] que hay que esperar.
+[Siento] que podríamos trabajar más a fondo.
 
 ##### Proposicionales
 
@@ -97,11 +108,23 @@ Introducen incertidumbre en el contenido proposicional
 
 ###### Grado
 
+[Casi] no hay librerías en el pueblo.
+Esto debería de ser [relativamente] sencillo.
+
 ###### Frecuencia
+
+[Generalmente] no salgo los jueves por la tarde.
+[Raramente ceno en ese restaurante.
 
 ###### Falta de especificidad
 
+Tuvo que haber escapado de [alguna] manera.
+[Hay quien] dice que murió ahogado.
+
 ###### Cuantificadores
+
+Me dijeron [más o menos] qué tengo que hacer.
+Sería [poco prudente] hablarle de esa manera.
 
 ### 1.2 Cómo anotar los atenuantes retóricos
 
@@ -119,8 +142,7 @@ Consideremos este ejemplo:
 
 1. Yo creo que ésta es una situación delicada.
 
-Debido a que hay atenuación retórica en esta oración, la anotamos de la siguiente
-manera:
+Debido a que hay atenuación retórica en esta oración, la anotamos de la siguiente manera:
 
         Yo creo que ésta es una situación delicada.     creo    HREL
 
