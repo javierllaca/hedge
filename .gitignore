@@ -1,6 +1,7 @@
 *~
 *.class
-*.jar
 *.pyc
 
+src/corpus
+src/jar
 src/scripts/old

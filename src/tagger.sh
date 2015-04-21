@@ -3,15 +3,15 @@
 FORUM=$1
 TOKENS=$2
 
-DRIVER=java/com/javierllaca/hedge/Main
+DRIVER=com/javierllaca/hedge/Main
 CLASSPATH=jar/*:.
 
 PROCESS=py/pre
 
-SLANG=database/slang.csv
-HEDGE=database/hedges.csv
+SLANG=db/slang.csv
+HEDGE=db/hedges.csv
 
-INPUT=~/speech/corpus/forums/$FORUM
+INPUT=corpus/$FORUM
 OUTPUT=amt/pre/$FORUM.csv
 
 LOG=$FORUM.log
@@ -29,7 +29,7 @@ traverse () {
 
 if [ $# -eq 2 ]; then
         # Compile all relevant java code
-        javac -encoding utf8 -cp $DEPENDENCIES $DRIVER.java
+        javac -encoding utf8 -cp $CLASSPATH $DRIVER.java
 
         # Print csv header
         echo "hedge,sentence,usage_a,usage_b,gold,hedge_gold" > $OUTPUT

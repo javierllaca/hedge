@@ -1,4 +1,5 @@
 from csv            import DictReader
+from sys            import argv
 from unicodedata    import normalize as norm
 
 def normalize(s):
