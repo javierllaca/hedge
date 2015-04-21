@@ -1,10 +1,10 @@
 from re     import sub
 from sys    import stdin
 
-def parse_xml(f):
+def parse_xml():
     """Parse xml and print only content enclosed in <post> tags"""
     post = False
-    for line in f:
+    for line in stdin:
         line = line.strip()
         if is_match(r'</post|<quote', line):
             post = False
@@ -14,4 +14,4 @@ def parse_xml(f):
             post = True
 
 if __name__ == '__main__':
-    parse_xml(stdin)
+    parse_xml()
