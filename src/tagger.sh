@@ -1,20 +1,19 @@
 #!/bin/sh
 
-DRIVER=com/javierllaca/hedge/Main
+FORUM=$1
+TOKENS=$2
 
-CLASSPATH=~/java
-DEPENDENCIES="$CLASSPATH/*":.
+DRIVER=java/com/javierllaca/hedge/Main
+CLASSPATH=jar/*:.
 
-SCRIPTS=scripts/preprocessing
+PROCESS=py/pre
 
 SLANG=database/slang.csv
 HEDGE=database/hedges.csv
 
-FORUM=$1
-TOKENS=$2
-
 INPUT=~/speech/corpus/forums/$FORUM
 OUTPUT=amt/pre/$FORUM.csv
+
 LOG=$FORUM.log
 
 # Recursively output content of files in directory
@@ -39,7 +38,7 @@ if [ $# -eq 2 ]; then
         traverse $INPUT | \
 
         # Parse XML content
-        python $SCRIPTS/parse_xml.py | \
+        python $PROCESS/parse_xml.py | \
 
         # Main Java engine:
         # - Tokenize sentences
@@ -54,10 +53,10 @@ if [ $# -eq 2 ]; then
         uniq | \
 
         # Select tokens and log results
-        python $SCRIPTS/select_tokens.py $TOKENS log/$LOG | \
+        python $PROCESS/select_tokens.py $TOKENS log/$LOG | \
 
         # Append usages of tagged terms
-        python $SCRIPTS/append_usage.py $HEDGE | \
+        python $PROCESS/append_usage.py $HEDGE | \
 
         # Randomize rows for crowdsourcing task
         shuf >> $OUTPUT
