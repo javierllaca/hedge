@@ -14,15 +14,13 @@ FORUM=$1
 TOKENS=$2
 
 INPUT=~/speech/corpus/forums/$FORUM
-OUTPUT=amt/input/$FORUM.csv
+OUTPUT=amt/pre/$FORUM.csv
 LOG=$FORUM.log
 
 # Recursively output content of files in directory
 traverse () {
-        if [ -d $1 ]
-        then
-                for f in $1/*
-                do
+        if [ -d $1 ]; then
+                for f in $1/*; do
                         traverse $f
                 done
         else
@@ -30,19 +28,18 @@ traverse () {
         fi
 }
 
-if [ $# -eq 2 ]
-then
+if [ $# -eq 2 ]; then
         # Compile all relevant java code
         javac -encoding utf8 -cp $DEPENDENCIES $DRIVER.java
 
         # Print csv header
-        echo "hedge,sentence,usage_a,usage_b" > $OUTPUT
+        echo "hedge,sentence,usage_a,usage_b,gold,hedge_gold" > $OUTPUT
 
         # Output content of directory
         traverse $INPUT | \
 
         # Parse XML content
-        python scripts/parse_xml.py | \
+        python $SCRIPTS/parse_xml.py | \
 
         # Main Java engine:
         # - Tokenize sentences
