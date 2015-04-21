@@ -1,22 +1,18 @@
 from csv            import DictReader
-from sys            import argv
+from sys            import argv, stdin
 from unicodedata    import normalize as norm
 
 def normalize(s):
     """Normalize utf8 characters to their ascii equivalents"""
     return norm('NFD', s.decode('utf8')).encode('ascii', 'ignore')
 
-def csv_dict(path):
-    """Return a dictionary wrapping contents of csv file in path"""
-    with open(path, 'r') as hedgefile:
-        return DictReader(hedgefile, delimiter='\t', quotechar='\"')
-
 def hedge_usages(path):
-    reader = csv_dict(path)
-    hedges = {}
-    for row in reader:
-        hedges[normalize(row['hedge'])] = (row['usage_a'], row['usage_b'])
-    return hedges
+    with open(path, 'r') as hedgefile:
+        reader = DictReader(hedgefile, delimiter=',', quotechar='\"')
+        hedges = {}
+        for row in reader:
+            hedges[normalize(row['hedge'])] = (row['usage_a'], row['usage_b'])
+        return hedges
 
 def format_entry(line):
     return '\"' + line.replace('\"', '\"\"') + '\"'
