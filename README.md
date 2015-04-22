@@ -2,8 +2,8 @@
 
 Source code and documentation for research project on hedges
 
-Author: Javier Llaca
-Speech Lab, Department of Computer Science, Columbia University
+- Author: Javier Llaca
+- Speech Lab, Department of Computer Science, Columbia University
 
 ## Overview
 
@@ -19,5 +19,5 @@ Java Packages:
 
 Python Modules
 - [NLTK](http://www.nltk.org/)
-- [scikit-learn](htpp://scikit-learn.org)
+- [scikit-learn](http://scikit-learn.org)
 
