@@ -54,8 +54,8 @@ def print_unit(unit, judgements, hedge_types):
     else:
         print '%s\t%s\tNH' % (change_tag(sent), hedge)
 
-def list_to_csv(ls, path):
-    hedge_types = load_hedge_types('../../db/hedges.csv')
+def list_to_csv(ls, path, hedge_path):
+    hedge_types = load_hedge_types(hedge_path)
     writer = csv_writer(open(path, 'w'), delimiter='\t', quotechar='\"')
     writer.writerow([
             'segment',
@@ -69,7 +69,7 @@ def list_to_csv(ls, path):
         else:
             writer.writerow([change_tag(sent), hedge, 'NH'])
 
-def annotate(in_path, out_path):
+def annotate(in_path, out_path, hedge_path):
     units = load_units(in_path)
     good, bad = [], []
     for unit in units:
@@ -78,11 +78,11 @@ def annotate(in_path, out_path):
             good.append((unit, judgements))
         else:
             bad.append((unit, judgements))
-    list_to_csv(good, out_path)
+    list_to_csv(good, out_path, hedge_path)
 
 if __name__ == '__main__':
-    if len(argv) == 3:
-        annotate(argv[1], argv[2])
+    if len(argv) == 4:
+        annotate(argv[1], argv[2], argv[3])
     else:
-        print 'Usage: python %s <in> <out>' % argv[0]
+        print 'Usage: python %s <in> <out> <hedges>' % argv[0]
 

@@ -10,7 +10,7 @@ SLANG=db/slang.csv
 HEDGE=db/hedges.csv
 
 INPUT=corpus/$FORUM
-OUTPUT=amt/pre/$FORUM.csv
+OUTPUT=data/pre/$FORUM.csv
 
 LOG=$FORUM.log
 
@@ -36,7 +36,7 @@ if [ $# -eq 2 ]; then
     traverse $INPUT | \
 
     # Parse XML content
-    python pre/parse_xml.py | \
+    python scripts/parse_xml.py | \
 
     # Main Java engine:
     # - Tokenize sentences
@@ -51,10 +51,10 @@ if [ $# -eq 2 ]; then
     uniq | \
 
     # Select tokens and log results
-    python pre/select_tokens.py $TOKENS log/$LOG | \
+    python scripts/select_tokens.py $TOKENS log/$LOG | \
 
     # Append usages of tagged terms
-    python pre/append_usage.py $HEDGE | \
+    python scripts/append_usage.py $HEDGE | \
 
         # Randomize rows for crowdsourcing task
     shuf >> $OUTPUT
