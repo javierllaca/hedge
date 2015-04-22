@@ -20,25 +20,33 @@ def sent_hedge_toks(sentence):
 def sent_bigrams(sentence):
     return [bigram for bigram in ngrams(sent_hedge_toks(sentence), 2)]
 
-def tokens(path):
+def hedge_tokens(path):
     with open(path, 'r') as csv_file:
         reader = DictReader(csv_file, delimiter='\t', quotechar='\"')
         return [(row['segment'], row['proposition'], row['belief_type']) 
                 for row in reader]
 
-def bigram_freq(path):
-    bigrams = {}
-    for row in reader:
-        bs = sent_bigrams(row['segment'])
-        for b in bs:
-            if b in bigrams:
-                bigrams[b] += 1
-            else:
-                bigrams[b] = 1
-    return bigrams
+def type_to_bool(t):
+    return t != 'NH'
+
+def bigram_sense_pairs(tokens):
+    return [(b, type_to_bool(t)) 
+            for s, p, t in tokens
+            for b in sent_bigrams(s)]
+
+def bigram_table(bigram_sense_pairs):
+    table = {}
+    for bigram, sense in bigram_sense_pairs:
+        if bigram not in table:
+            table[bigram] = {}
+        if sense in table[bigram]:
+            table[bigram][sense] += 1
+        else:
+            table[bigram][sense] = 1
+    return table
 
 def classify(file_path):
-    print tokens(file_path)
+    print bigram_table(bigram_sense_pairs(hedge_tokens(file_path)))
 
 if __name__ == '__main__':
     if len(argv) == 2:
