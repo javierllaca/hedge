@@ -8,6 +8,7 @@ Source code and documentation for research project on hedges
 ## Overview
 
 This repository contains programs for
+
 1. Extracting data from a corpus and preparing it for crowdsourced annotation
 2. Training a classifier on the annotated data
 
