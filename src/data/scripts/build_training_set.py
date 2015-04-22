@@ -46,7 +46,9 @@ def bigram_table(bigram_sense_pairs):
     return table
 
 def classify(file_path):
-    print bigram_table(bigram_sense_pairs(hedge_tokens(file_path)))
+    table = bigram_table(bigram_sense_pairs(hedge_tokens(file_path)))
+    print table
+    print '%d unique bigrams' % len(table)
 
 if __name__ == '__main__':
     if len(argv) == 2:
